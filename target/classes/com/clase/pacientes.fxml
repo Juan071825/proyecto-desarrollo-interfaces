@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -37,7 +38,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="apepac" prefHeight="25.0" prefWidth="278.0">
+            <TextField fx:id="apelpac" prefHeight="25.0" prefWidth="278.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -70,7 +71,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="telpac" prefHeight="25.0" prefWidth="278.0">
+            <TextField fx:id="tlfpac" prefHeight="25.0" prefWidth="278.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -80,7 +81,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="maipac" prefHeight="25.0" prefWidth="207.0">
+            <TextField fx:id="emailpac" prefHeight="25.0" prefWidth="207.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -136,5 +137,6 @@
             <Insets left="10.0" right="10.0" />
          </padding>
       </HBox>
+      <Separator prefWidth="200.0" />
    </children>
 </VBox>

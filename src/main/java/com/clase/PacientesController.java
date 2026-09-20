@@ -1,8 +1,6 @@
 package com.clase;
 
 import java.time.LocalDate;
-import java.util.ResourceBundle;
-import java.net.URL;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -22,7 +20,10 @@ public class PacientesController {
     @FXML 
     private Button btnguardarpac, btnmodifpac, btndelpac;
 
-    public void inicialize(URL url, ResourceBundle rb) {
+    public void initialize() {
+
+        System.out.println("INITIALIZE EJECUTADO");
+
         dnipac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 comprobarDni();
@@ -40,13 +41,14 @@ public class PacientesController {
 
         apelpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                String nombre = ponerInicialesMayusculas(nompac.getText());
-                nompac.setText(nombre);
+                String apellidos = ponerInicialesMayusculas(apelpac.getText());
+                nompac.setText(apellidos);
             }
         });
 
 
         tlfpac.focusedProperty().addListener((observable, oldValue, newValue) -> {});
+
 
 
         propac.getItems().addAll(
