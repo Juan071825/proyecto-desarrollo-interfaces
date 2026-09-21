@@ -1,4 +1,4 @@
 module-info.class
-com/clase/Controller.class
-com/clase/App.class
-com/clase/PacientesController.class
+com\clase\Controller.class
+com\clase\PacientesController.class
+com\clase\App.class
