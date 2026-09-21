@@ -1,5 +1,7 @@
 package com.clase;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.LocalDate;
 
 import javafx.fxml.FXML;
@@ -8,16 +10,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Button;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class PacientesController {
-    
-    @FXML 
+
+    @FXML
     private TextField dnipac, apelpac, nompac, tlfpac, emailpac, dirpac;
-    @FXML 
+    @FXML
     private DatePicker nacpac;
-    @FXML 
+    @FXML
     private ComboBox<String> propac, locpac;
-    @FXML 
+    @FXML
     private Button btnguardarpac, btnmodifpac, btndelpac;
 
     public void initialize() {
@@ -36,7 +41,7 @@ public class PacientesController {
                 String nombre = ponerInicialesMayusculas(nompac.getText());
                 nompac.setText(nombre);
             }
-            
+
         });
 
         apelpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -46,27 +51,21 @@ public class PacientesController {
             }
         });
 
+        tlfpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        });
 
-        tlfpac.focusedProperty().addListener((observable, oldValue, newValue) -> {});
-
-
-
-        propac.getItems().addAll(
-            "A Coruña",
-            "Lugo",
-            "Ourense",
-            "Pontevedra"
-        );
+        cargarProvincias();
+        propac.setOnAction(e -> cargarMunicipios());
 
     }
 
-    @FXML 
-    private void comprobarDni(){
+    @FXML
+    private void comprobarDni() {
         String dni = dnipac.getText().trim().toUpperCase();
         if (dni.isEmpty())
             return;
 
-        if(validarDniNie(dni)) {
+        if (validarDniNie(dni)) {
             dnipac.setStyle("");
             dnipac.setStyle(dni);
         } else {
@@ -101,7 +100,7 @@ public class PacientesController {
         return false;
     }
 
-    @FXML 
+    @FXML
     private String ponerInicialesMayusculas(String texto) {
         String[] palabras = texto.toLowerCase().trim().split("\\s+");
         StringBuilder resultado = new StringBuilder();
@@ -109,8 +108,8 @@ public class PacientesController {
         for (String palabra : palabras) {
             if (!palabra.isEmpty()) {
                 resultado.append(Character.toUpperCase(palabra.charAt(0)))
-                         .append(palabra.substring(1))
-                         .append(" ");
+                        .append(palabra.substring(1))
+                        .append(" ");
             }
         }
 
@@ -122,7 +121,95 @@ public class PacientesController {
         return telefono.matches("[67][0-9]{8}");
     }
 
-    @FXML 
+    private void cargarProvincias() {
+
+        // Abrimos el fichero JSON que está dentro de resources
+        // usamos la clase de java InputStrem que lee datos en este caso de un fichero
+
+        InputStream is = getClass()
+                .getResourceAsStream("/com/clase/data/municipios.json");
+
+        if (is == null) {
+            throw new RuntimeException("================================================NO SE ENCUENTRA EL JSON");
+        }
+
+        // Leemos el JSON y lo convertimos en un objeto JsonObject
+        JsonObject json = JsonParser.parseReader(
+                new InputStreamReader(is)).getAsJsonObject();
+
+        // Obtenemos el array "provincias" del JSON
+        JsonArray provincias = json.getAsJsonArray("provincias");
+
+        // Recorremos todas las provincias
+        for (var provincia : provincias) {
+
+            // Cada elemento del array es un objeto JSON
+            JsonObject p = provincia.getAsJsonObject();
+
+            // Obtenemos el nombre de la provincia
+            // y lo añadimos al ComboBox
+            propac.getItems().add(
+                    p.get("nm").getAsString());
+        }
+    }
+
+    private void cargarMunicipios() {
+
+        // Abrimos de nuevo el fichero JSON
+        InputStream is = getClass()
+                .getResourceAsStream("/com/clase/data/municipios.json");
+
+        // Convertimos el contenido del fichero en un JsonObject
+        JsonObject json = JsonParser.parseReader(
+                new InputStreamReader(is)).getAsJsonObject();
+
+        // Obtenemos los dos arrays que necesitamos
+        JsonArray provincias = json.getAsJsonArray("provincias");
+        JsonArray municipios = json.getAsJsonArray("municipios");
+
+        // Obtenemos el nombre de la provincia seleccionada
+        String nombreProvincia = propac.getValue();
+
+        // Variable donde guardaremos el código de la provincia
+        String idProvincia = "";
+
+        // Recorremos las provincias
+        for (var provincia : provincias) {
+
+            JsonObject p = provincia.getAsJsonObject();
+
+            // Comprobamos si es la provincia seleccionada
+            if (p.get("nm").getAsString().equals(nombreProvincia)) {
+
+                // Obtenemos su código
+                idProvincia = p.get("id").getAsString();
+
+                // Ya hemos encontrado la provincia
+                break;
+            }
+        }
+
+        // Eliminamos los municipios que pudiera haber
+        // de una selección anterior muy importante sino agrega municipios
+        locpac.getItems().clear();
+
+        // Recorremos todos los municipios
+        for (var municipio : municipios) {
+
+            JsonObject m = municipio.getAsJsonObject();
+
+            // Comprobamos los dos primeros caracteres del código
+            if (m.get("id").getAsString().startsWith(idProvincia)) {
+
+                // Si pertenecen a la provincia,
+                // añadimos su nombre al ComboBox
+                locpac.getItems().add(
+                        m.get("nm").getAsString());
+            }
+        }
+    }
+
+    @FXML
     private void guardarPaciente() {
 
         String dni = dnipac.getText();
@@ -148,8 +235,7 @@ public class PacientesController {
         System.out.println("Dirección: " + direccion);
         System.out.println("Provincia: " + provincia);
         System.out.println("Localidad: " + localidad);
-        System.out.println("==================");        
+        System.out.println("==================");
     }
-
 
 }
