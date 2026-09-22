@@ -4,6 +4,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 
+import com.clase.modelo.Paciente;
+import com.clase.persistencia.PacienteDAOMySQL;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
@@ -17,11 +20,11 @@ import com.google.gson.JsonParser;
 public class PacientesController {
 
     @FXML
-    private TextField dnipac, apelpac, nompac, tlfpac, emailpac, dirpac;
+    private TextField dnipac, apelpac, nompac, movilpac, emailpac, dirpac;
     @FXML
     private DatePicker nacpac;
     @FXML
-    private ComboBox<String> propac, locpac;
+    private ComboBox<String> propac, munipac;
     @FXML
     private Button btnguardarpac, btnmodifpac, btndelpac;
 
@@ -51,7 +54,7 @@ public class PacientesController {
             }
         });
 
-        tlfpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        movilpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
         });
 
         cargarProvincias();
@@ -191,7 +194,7 @@ public class PacientesController {
 
         // Eliminamos los municipios que pudiera haber
         // de una selección anterior muy importante sino agrega municipios
-        locpac.getItems().clear();
+        munipac.getItems().clear();
 
         // Recorremos todos los municipios
         for (var municipio : municipios) {
@@ -203,7 +206,7 @@ public class PacientesController {
 
                 // Si pertenecen a la provincia,
                 // añadimos su nombre al ComboBox
-                locpac.getItems().add(
+                munipac.getItems().add(
                         m.get("nm").getAsString());
             }
         }
@@ -212,25 +215,31 @@ public class PacientesController {
     @FXML
     private void guardarPaciente() {
 
+        if (nacpac.getValue() == null){
+            System.out.println("Debes introducir la fecha de nacimiento");
+        };
+
         String dni = dnipac.getText();
         String apellidos = apelpac.getText();
         String nombre = nompac.getText();
 
         LocalDate fechaNacimiento = nacpac.getValue();
 
-        String telefono = tlfpac.getText();
+        String movil = movilpac.getText();
         String email = emailpac.getText();
         String direccion = dirpac.getText();
 
         String provincia = propac.getValue();
-        String localidad = locpac.getValue();
+        String localidad = munipac.getValue();
+
+        Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);
 
         System.out.println("=====PACIENTE=====");
         System.out.println("DNI: " + dni);
         System.out.println("Apellidos: " + apellidos);
         System.out.println("Nombre: " + nombre);
         System.out.println("Fecha nacimiento: " + fechaNacimiento);
-        System.out.println("Teléfono: " + telefono);
+        System.out.println("Teléfono: " + movil);
         System.out.println("Email: " + email);
         System.out.println("Dirección: " + direccion);
         System.out.println("Provincia: " + provincia);
