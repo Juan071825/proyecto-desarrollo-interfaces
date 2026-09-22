@@ -233,6 +233,9 @@ public class PacientesController {
         String localidad = munipac.getValue();
 
         Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);
+        
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+        dao.guardarPaciente(paciente);
 
         System.out.println("=====PACIENTE=====");
         System.out.println("DNI: " + dni);
