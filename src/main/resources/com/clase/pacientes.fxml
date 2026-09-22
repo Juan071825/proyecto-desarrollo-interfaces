@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.PacientesController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.PacientesController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="392.0" text="Xestión Pacientes">
          <font>
@@ -71,7 +71,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="tlfpac" prefHeight="25.0" prefWidth="278.0">
+            <TextField fx:id="movilpac" prefHeight="25.0" prefWidth="278.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -110,7 +110,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <ComboBox fx:id="locpac" prefHeight="25.0" prefWidth="275.0" />
+            <ComboBox fx:id="munipac" prefHeight="25.0" prefWidth="275.0" />
          </children>
          <VBox.margin>
             <Insets top="20.0" />
@@ -118,12 +118,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1280.0">
          <children>
-            <Button fx:id="btnguardarpac" mnemonicParsing="false" text="Guardar">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btnmodifpac" mnemonicParsing="false" text="Modificar">
+            <Button fx:id="btnguardarpac" mnemonicParsing="false" onAction="#guardarPaciente" text="Guardar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
