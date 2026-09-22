@@ -1,4 +1,8 @@
 E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\Controller.java
+E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\persistencia\PacienteDAOMySQL.java
 E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\PacientesController.java
 E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\module-info.java
 E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\App.java
+E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\modelo\Paciente.java
+E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\persistencia\ConexionMySQL.java
+E:\DI\proyecto\proyecto-desarrollo-interfaces\src\main\java\com\clase\persistencia\PacienteDAO.java
