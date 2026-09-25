@@ -26,6 +26,17 @@ public class Paciente {
         this.munipac = munipac;
     }
 
+    //Constructor para el paciente de la tabla
+    public Paciente(String dnipac, String apelpac, String nompac,
+                    String movilpac, String propac, String munipac) {
+        this.dnipac = dnipac;
+        this.apelpac = apelpac;
+        this.nompac = nompac;
+        this.movilpac = movilpac;
+        this.propac = propac;
+        this.munipac = munipac;
+    }
+
     public String getDni() {
         return dnipac;
     }
