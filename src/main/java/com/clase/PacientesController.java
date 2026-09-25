@@ -33,6 +33,8 @@ public class PacientesController {
 
         System.out.println("INITIALIZE EJECUTADO");
 
+        cargarPacientes();
+
         dnipac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 comprobarDni();
@@ -102,6 +104,8 @@ public class PacientesController {
         }
 
         return false;
+
+        
     }
 
     @FXML
