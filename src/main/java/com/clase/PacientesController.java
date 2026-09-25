@@ -3,6 +3,7 @@ package com.clase;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.PacienteDAOMySQL;
@@ -237,6 +238,10 @@ public class PacientesController {
         PacienteDAOMySQL dao = new PacienteDAOMySQL();
         dao.guardarPaciente(paciente);
 
+        //cargar paciente en la tabla
+        cargarPacientes();
+
+
         System.out.println("=====PACIENTE=====");
         System.out.println("DNI: " + dni);
         System.out.println("Apellidos: " + apellidos);
@@ -248,6 +253,13 @@ public class PacientesController {
         System.out.println("Provincia: " + provincia);
         System.out.println("Localidad: " + localidad);
         System.out.println("==================");
+    }
+
+    @FXML 
+    private void cargarPacientes() {
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+        List<Paciente> pacientes = dao.cargarPacientes();
+        tablaPacientes.getItems().setAll(pacientes);
     }
 
 }
