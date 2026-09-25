@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -28,6 +30,14 @@ public class PacientesController {
     private ComboBox<String> propac, munipac;
     @FXML
     private Button btnguardarpac, btnmodifpac, btndelpac;
+
+    @FXML
+    private TableView<Paciente> tablaPacientes;
+
+    @FXML 
+    private TableColumn<Paciente, String> coldnipac;
+
+    
 
     public void initialize() {
 
