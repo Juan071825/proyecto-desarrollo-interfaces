@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.PacienteDAOMySQL;
@@ -20,6 +22,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+
 public class PacientesController {
 
     @FXML
@@ -35,7 +38,7 @@ public class PacientesController {
     private TableView<Paciente> tablaPacientes;
 
     @FXML 
-    private TableColumn<Paciente, String> coldnipac;
+    private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colemailpac, coldirpac;
 
     
 
@@ -63,11 +66,16 @@ public class PacientesController {
         apelpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 String apellidos = ponerInicialesMayusculas(apelpac.getText());
-                nompac.setText(apellidos);
+                apelpac.setText(apellidos);
             }
         });
 
         movilpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            comprobarMovil();
+        });
+
+        emailpac.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            comprobarEmail();
         });
 
         cargarProvincias();
@@ -84,6 +92,7 @@ public class PacientesController {
         if (validarDniNie(dni)) {
             dnipac.setStyle("");
             dnipac.setStyle(dni);
+            dnipac.setText(dni.toUpperCase());
         } else {
             dnipac.setStyle("-fx-border-color : red;");
             dnipac.setText("");
@@ -112,11 +121,9 @@ public class PacientesController {
 
             return letra == documento.charAt(8);
         }
-
-        return false;
-
-        
+        return false;  
     }
+
 
     @FXML
     private String ponerInicialesMayusculas(String texto) {
@@ -130,14 +137,56 @@ public class PacientesController {
                         .append(" ");
             }
         }
-
         return resultado.toString().trim();
     };
 
-    @FXML
-    private boolean validarTelefono(String telefono) {
-        return telefono.matches("[67][0-9]{8}");
+    @FXML 
+    private void comprobarMovil() {
+        String movil = movilpac.getText().trim().toUpperCase();
+        if (movil.isEmpty())
+            return;
+
+        if (validarMovil(movil)) {
+            movilpac.setStyle("");
+            movilpac.setStyle(movil);
+        } else {
+            movilpac.setStyle("-fx-border-color : red;");
+            movilpac.setText("");
+        }
     }
+
+
+    @FXML
+    private boolean validarMovil(String movil) {
+        return movil.matches("[67][0-9]{8}");
+    }
+
+
+    private void comprobarEmail(){
+        String email = emailpac.getText().trim().toUpperCase();
+        if (email.isEmpty())
+            return;
+
+        if (validarEmail(email)) {
+            emailpac.setStyle("");
+            emailpac.setStyle(email);
+        } else {
+            emailpac.setStyle("-fx-border-color : red;");
+            emailpac.setText("");
+        }
+    }
+
+
+    private boolean validarEmail(String email) {
+        if (email == null || email.isBlank()) {
+            return false;
+        }
+
+        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+        return email.matches(regex);
+    }
+
 
     private void cargarProvincias() {
 
