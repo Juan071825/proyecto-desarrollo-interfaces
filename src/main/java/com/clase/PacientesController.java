@@ -30,7 +30,7 @@ public class PacientesController {
     @FXML
     private ComboBox<String> propac, munipac;
     @FXML
-    private Button btnguardarpac, btnmodifpac, btndelpac;
+    private Button btnguardarpac, btndelpac;
 
     @FXML
     private TableView<Paciente> tablaPacientes;
