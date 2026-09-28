@@ -10,6 +10,7 @@ import com.clase.persistencia.PacienteDAOMySQL;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Button;
@@ -30,13 +31,13 @@ public class PacientesController {
     @FXML
     private ComboBox<String> propac, munipac;
     @FXML
-    private Button btnguardarpac, btndelpac;
+    private Button btnguardarpac, btndelpac, btnlimpiarpac;
 
     @FXML
     private TableView<Paciente> tablaPacientes;
 
     @FXML 
-    private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colemailpac, coldirpac;
+    private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colpropac, colmunipac;
 
     
 
@@ -79,6 +80,12 @@ public class PacientesController {
         propac.setOnAction(e -> cargarMunicipios());
         cargarPacientes();
 
+        coldnipac.setCellValueFactory(new PropertyValueFactory<>("dni"));
+        colapelpac.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+        colnompac.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colmovilpac.setCellValueFactory(new PropertyValueFactory<>("movil"));
+        colmunipac.setCellValueFactory(new PropertyValueFactory<>("municipio"));
+        colpropac.setCellValueFactory(new PropertyValueFactory<>("provincia"));
     }
 
     @FXML
@@ -321,5 +328,19 @@ public class PacientesController {
         PacienteDAOMySQL dao = new PacienteDAOMySQL();
         List<Paciente> pacientes = dao.cargarPacientes();
         tablaPacientes.getItems().setAll(pacientes);
+    }
+
+
+    @FXML 
+    private void limpiarValores() {
+        dnipac.setText("");
+        apelpac.setText("");
+        nompac.setText("");
+        movilpac.setText("");
+        emailpac.setText("");
+        dirpac.setText("");
+        nacpac.setValue(null);
+        propac.getSelectionModel().clearSelection();
+        munipac.getSelectionModel().clearSelection();
     }
 }
