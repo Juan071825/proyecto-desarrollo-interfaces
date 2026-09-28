@@ -57,7 +57,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false">
+            <Button fx:id="btnlimpiarpac" mnemonicParsing="false" onAction="#limpiarValores">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                      <image>
