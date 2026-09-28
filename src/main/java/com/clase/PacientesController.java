@@ -44,7 +44,6 @@ public class PacientesController {
 
         System.out.println("INITIALIZE EJECUTADO");
 
-        cargarPacientes();
 
         dnipac.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
@@ -78,6 +77,7 @@ public class PacientesController {
 
         cargarProvincias();
         propac.setOnAction(e -> cargarMunicipios());
+        cargarPacientes();
 
     }
 
@@ -322,5 +322,4 @@ public class PacientesController {
         List<Paciente> pacientes = dao.cargarPacientes();
         tablaPacientes.getItems().setAll(pacientes);
     }
-
 }
