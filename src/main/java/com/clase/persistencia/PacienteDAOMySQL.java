@@ -1,6 +1,9 @@
 package com.clase.persistencia;
 
 import com.clase.modelo.Paciente;
+
+import javafx.fxml.FXML;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,6 +43,7 @@ public class PacienteDAOMySQL implements PacienteDAO {
 
     }
 
+
     // seleccionar pacientes de la bbdd
     @Override
     public List<Paciente> cargarPacientes() {
@@ -76,5 +80,65 @@ public class PacienteDAOMySQL implements PacienteDAO {
 
         return pacientes;
     }
+
+
+     public void  eliminarPaciente(String dni) {
+
+        String sql = "DELETE FROM pacientes WHERE dnipac = ?";
+
+        try(Connection conexion = ConexionMySQL.getConexion();
+            PreparedStatement ps = conexion.prepareStatement((sql))) {
+                ps.setString(1, dni);
+
+                ps.executeUpdate();
+
+                System.out.println("Paciente eliminado correctamente");
+            } catch(SQLException e) {
+                System.out.println("Error al eliminar el paciente: " + e.getMessage());
+            }
+
+    }
+
+
+    // Buscar un paciente por DNI
+    public Paciente buscarPaciente(String dni) {
+
+        String sql = "SELECT dnipac, apelpac, nompac, movilpac, "
+                + " emailpac, nacpac, dirpac, propac, munipac "
+                + " FROM pacientes "
+                + " WHERE dnipac = ?";
+
+        try (Connection conexion = ConexionMySQL.getConexion();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, dni);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+
+                    Paciente paciente = new Paciente(
+                            rs.getString("dnipac"),
+                            rs.getString("apelpac"),
+                            rs.getString("nompac"),
+                            rs.getString("movilpac"),
+                            rs.getString("emailpac"),
+                            rs.getDate("nacpac").toLocalDate(),
+                            rs.getString("dirpac"),
+                            rs.getString("propac"),
+                            rs.getString("munipac"));
+
+                    return paciente;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el paciente: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+
 
 }

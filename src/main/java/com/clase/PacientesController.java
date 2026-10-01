@@ -39,6 +39,8 @@ public class PacientesController {
     @FXML 
     private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colpropac, colmunipac;
 
+    boolean pacienteExiste = false;
+
     
 
     public void initialize() {
@@ -86,6 +88,16 @@ public class PacientesController {
         colmovilpac.setCellValueFactory(new PropertyValueFactory<>("movil"));
         colmunipac.setCellValueFactory(new PropertyValueFactory<>("municipio"));
         colpropac.setCellValueFactory(new PropertyValueFactory<>("provincia"));
+
+
+        tablaPacientes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, nuevo) -> {
+
+            if (nuevo != null) {
+                cargarPaciente();
+            }
+
+        });
+
     }
 
     @FXML
@@ -342,5 +354,50 @@ public class PacientesController {
         nacpac.setValue(null);
         propac.getSelectionModel().clearSelection();
         munipac.getSelectionModel().clearSelection();
+    }
+
+   
+    @FXML 
+    private void eliminarPaciente() {
+        Paciente seleccionado = tablaPacientes.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null) {
+            return;
+        }
+
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+        dao.eliminarPaciente((seleccionado.getDni()));
+
+        cargarPacientes();
+    }
+   
+
+    @FXML 
+    private void cargarPaciente() {
+        Paciente pacienteSelect = tablaPacientes.getSelectionModel().getSelectedItem();
+
+        if (pacienteSelect == null) {
+            return;
+        } else {
+            pacienteExiste = true;
+        }
+
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+
+        Paciente paciente = dao.buscarPaciente(pacienteSelect.getDni());
+
+        if (paciente == null) {
+            return;
+        }
+
+        dnipac.setText(paciente.getDni());
+        apelpac.setText(paciente.getApellidos());
+        nompac.setText(paciente.getNombre());
+        movilpac.setText(paciente.getMovil());
+        emailpac.setText(paciente.getEmail());
+        nacpac.setValue(paciente.getNacimiento());
+        dirpac.setText(paciente.getDireccion());
+        propac.setValue(paciente.getProvincia());
+        munipac.setValue(paciente.getProvincia());
     }
 }

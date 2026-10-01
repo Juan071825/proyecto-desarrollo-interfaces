@@ -6,5 +6,7 @@ public interface PacienteDAO {
     
     void guardarPaciente(Paciente paciente);
     List<Paciente> cargarPacientes();
+    Paciente buscarPaciente(String dni);
+    void eliminarPaciente(String dni);
 
 }

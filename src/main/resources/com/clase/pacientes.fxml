@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.PacientesController">
+<VBox fx:id="bntBuscarPac" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.PacientesController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="392.0" text="Xestión Pacientes">
          <font>
@@ -37,6 +37,15 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/455-4559731_icono-de-lupa-para-legal-design-thinking-lupa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Label text="Apellidos:">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -136,7 +145,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btndelpac" mnemonicParsing="false" text="Eliminar" />
+            <Button fx:id="btndelpac" mnemonicParsing="false" onAction="#eliminarPaciente" text="Eliminar" />
          </children>
          <VBox.margin>
             <Insets top="20.0" />
