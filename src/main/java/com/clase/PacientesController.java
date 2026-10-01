@@ -313,10 +313,18 @@ public class PacientesController {
         String provincia = propac.getValue();
         String localidad = munipac.getValue();
 
-        Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);
-        
-        PacienteDAOMySQL dao = new PacienteDAOMySQL();
-        dao.guardarPaciente(paciente);
+
+        Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);        
+
+        if (pacienteExiste) {
+            PacienteDAOMySQL dao = new PacienteDAOMySQL();
+            dao.modificarPaciente(paciente.getDni(), paciente);
+            pacienteExiste = false;
+        } else {
+            PacienteDAOMySQL dao = new PacienteDAOMySQL();
+            dao.guardarPaciente(paciente);
+        }
+
 
         //cargar paciente en la tabla
         cargarPacientes();
@@ -400,4 +408,8 @@ public class PacientesController {
         propac.setValue(paciente.getProvincia());
         munipac.setValue(paciente.getProvincia());
     }
+
+
+
+
 }

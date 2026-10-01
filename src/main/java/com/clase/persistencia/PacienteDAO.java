@@ -8,5 +8,5 @@ public interface PacienteDAO {
     List<Paciente> cargarPacientes();
     Paciente buscarPaciente(String dni);
     void eliminarPaciente(String dni);
-
+    void modificarPaciente(String dni, Paciente paciente);
 }

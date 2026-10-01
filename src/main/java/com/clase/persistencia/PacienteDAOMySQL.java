@@ -140,5 +140,40 @@ public class PacienteDAOMySQL implements PacienteDAO {
     }
 
 
+    public void modificarPaciente(String dni, Paciente paciente) {
 
+        String sql = "UPDATE pacientes SET "
+                + "apelpac = ?, "
+                + "nompac = ?, "
+                + "movilpac = ?, "
+                + "emailpac = ?, "
+                + "nacpac = ?, "
+                + "dirpac = ?, "
+                + "propac = ?, "
+                + "munipac = ? "
+                + "WHERE dnipac = ?";
+
+        try (Connection conexion = ConexionMySQL.getConexion();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, paciente.getApellidos());
+            ps.setString(2, paciente.getNombre());
+            ps.setString(3, paciente.getMovil());
+            ps.setString(4, paciente.getEmail());
+            ps.setDate(5, java.sql.Date.valueOf(paciente.getNacimiento()));
+            ps.setString(6, paciente.getDireccion());
+            ps.setString(7, paciente.getProvincia());
+            ps.setString(8, paciente.getMunicipio());
+
+            // DNI original para localizar el paciente
+            ps.setString(9, dni);
+
+            ps.executeUpdate();
+
+            System.out.println("Paciente modificado correctamente.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al modificar el paciente: " + e.getMessage());
+        }
+    }
 }
