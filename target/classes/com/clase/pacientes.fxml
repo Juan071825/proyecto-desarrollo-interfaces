@@ -37,7 +37,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false">
+            <Button fx:id="btnBuscarPac" mnemonicParsing="false" onAction="#buscaPacDni">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>

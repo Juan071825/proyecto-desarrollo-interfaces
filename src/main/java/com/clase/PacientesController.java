@@ -410,6 +410,25 @@ public class PacientesController {
     }
 
 
+    @FXML 
+    private void buscaPacDni() {
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+        Paciente paciente = dao.buscaPacdni(dnipac.getText());
 
+        if (paciente == null){
+           return;
+        } else {
+            pacienteExiste = true;
+        }
 
+        dnipac.setText(paciente.getDni());
+        apelpac.setText(paciente.getApellidos());
+        nompac.setText(paciente.getNombre());
+        movilpac.setText(paciente.getMovil());
+        emailpac.setText(paciente.getEmail());
+        nacpac.setValue(paciente.getNacimiento());
+        dirpac.setText(paciente.getDireccion());
+        propac.setValue(paciente.getProvincia());
+        munipac.setValue(paciente.getMunicipio());
+    }
 }
