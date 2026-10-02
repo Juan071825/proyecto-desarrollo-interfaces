@@ -20,7 +20,7 @@ public class VentanaController {
     @FXML 
     private void mostrarAcercade() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-            getClass().getResource("com/clase/acercade.fxml")
+            getClass().getResource("/com/clase/acercade.fxml")
         );
         Parent root = loader.load();
 
