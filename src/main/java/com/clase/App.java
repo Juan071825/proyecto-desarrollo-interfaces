@@ -19,7 +19,7 @@ public class App extends Application {
         );
 
             Scene scene = new Scene(loader.load(), 1024, 800);
-                stage.setTitle("Sanitarios Teis");
+                stage.setTitle("Sanidad Teis");
                 stage.setScene(scene);
                 stage.setMaximized(true);
                 stage.show();

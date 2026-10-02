@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.AcercadeController">
    <children>
-      <Button fx:id="btnCerrarAcercade" alignment="CENTER" contentDisplay="CENTER" layoutX="273.0" layoutY="328.0" mnemonicParsing="false" onAction="#cerrarAcerade" text="Cerrar" />
+      <Button fx:id="btnCerrarAcercade" alignment="CENTER" contentDisplay="CENTER" layoutX="273.0" layoutY="328.0" mnemonicParsing="false" onAction="#cerrarAcercade" text="Cerrar" />
       <VBox alignment="CENTER" layoutX="222.0" layoutY="60.0" prefHeight="245.0" prefWidth="150.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="119.0" text="Sanidad Teis">
