@@ -1,4 +1,4 @@
-package com.clase.persistencia;
+package com.clase;
 
 import com.clase.modelo.Doctor;
 
@@ -233,7 +233,7 @@ public class DoctoresController {
 
 
     @FXML 
-    private void cargarPacientes() {
+    private void cargarDoctores() {
         PacienteDAOMySQL dao = new DoctorDAOMySQL();
         List<Doctor> doctores = dao.cargarDoctores();
         tablaDoctores.getItems().setAll(doctores);
