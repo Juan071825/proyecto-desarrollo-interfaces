@@ -29,4 +29,13 @@ public class VentanaController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML 
+    private void abrirDir() {
+        try {
+            new ProcessBuilder("explorer.exe").start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
