@@ -32,20 +32,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="iddoc" prefHeight="26.0" prefWidth="89.0">
+            <TextField fx:id="iddoc" disable="true" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #FFF1A8;">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="btnBuscarPac" mnemonicParsing="false" onAction="#buscaPacDni">
-               <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/4715177.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Label text="Apellidos:">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -97,7 +88,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="maildoc" prefHeight="25.0" prefWidth="207.0">
+            <TextField fx:id="emaildoc" prefHeight="25.0" prefWidth="207.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                </HBox.margin>
@@ -123,6 +114,18 @@
                </HBox.margin>
             </Label>
             <ComboBox fx:id="espedoc" prefWidth="150.0" />
+            <Button fx:id="btnBuscarPac" mnemonicParsing="false" onAction="#buscaPacDni">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/4715177.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <VBox.margin>
             <Insets top="20.0" />

@@ -13,30 +13,27 @@ public class DoctorDAOMySQL implements DoctorDAO {
     
     @Override 
     public void guardarDoctor(Doctor doctor) {
-        String sql = "INSERT INTO pacientes"
-                    + "(dnipac, apelpac, nompac, movilpac, emailpac, nacpac, " 
-                    + " dirpac, propac, munipac)" 
-                    + "VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO doctores"
+                    + "(apeldoc, nomdoc, movildoc, maildoc, coledoc, espedoc) " 
+                    + "VALUES (?,?,?,?,?,?)";
 
         try (Connection conexion = ConexionMySQL.getConexion();
             PreparedStatement ps = conexion.prepareStatement(sql)) {
 
-                ps.setString(1, paciente.getDni());
-                ps.setString(2, paciente.getApellidos());
-                ps.setString(3, paciente.getNombre());
-                ps.setString(4, paciente.getMovil());
-                ps.setString(5, paciente.getEmail());
-                ps.setDate(6, java.sql.Date.valueOf(paciente.getNacimiento()));
-                ps.setString(7, paciente.getDireccion());
-                ps.setString(8, paciente.getProvincia());
-                ps.setString(9, paciente.getMunicipio());
+                ps.setString(1, doctor.getApellidos());
+                ps.setString(2, doctor.getNombre());
+                ps.setString(3, doctor.getMovil());
+                ps.setString(4, doctor.getMail());
+                ps.setBoolean(5, doctor.getColegiado());
+                ps.setString(6, doctor.getEspecialidad());
+
 
                 ps.executeUpdate();
 
-                System.out.println("Paciente guardado correctamente");
+                System.out.println("Doctor guardado correctamente");
 
             } catch (SQLException e) {
-                System.out.println("Error al guardar el paciente: " + e.getMessage());
+                System.out.println("Error al guardar el doctor: " + e.getMessage());
             }
 
     }
@@ -49,10 +46,9 @@ public class DoctorDAOMySQL implements DoctorDAO {
         List<Doctor> doctores = new ArrayList<>();
 
         // Solo obtenemos los campos que necesitamos para la tabla
-        String sql = "SELECT dnipac, apelpac, nompac, movilpac, "
-                + "propac, munipac "
-                + "FROM pacientes "
-                + "ORDER BY apelpac, nompac";
+        String sql = "SELECT * "
+                + "FROM doctores "
+                + "ORDER BY apeldoc, nomdoc";
 
         try (Connection conexion = ConexionMySQL.getConexion();
                 PreparedStatement ps = conexion.prepareStatement(sql);
@@ -62,12 +58,11 @@ public class DoctorDAOMySQL implements DoctorDAO {
             while (rs.next()) {
 
                 Doctor doctor = new Doctor(
-                        rs.getString("dnipac"),
-                        rs.getString("apelpac"),
-                        rs.getString("nompac"),
+                        rs.getInt("iddoc"),
+                        rs.getString("apeldoc"),                        
+                        rs.getString("nomdoc"),
                         rs.getString("movilpac"),
-                        rs.getString("propac"),
-                        rs.getString("munipac"));
+                        rs.getString("espedoc"));
 
                 doctores.add(doctor);
             }
@@ -99,32 +94,30 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
 
     // Buscar un paciente por DNI
-    public Doctor buscarDoctorId(String dni) {
+    public Doctor buscaDoctorId(Integer dni) {
 
-        String sql = "SELECT dnipac, apelpac, nompac, movilpac, "
-                + " emailpac, nacpac, dirpac, propac, munipac "
-                + " FROM pacientes "
-                + " WHERE dnipac = ?";
+        String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
+                + " maildoc, espedoc "
+                + " FROM doctores "
+                + " WHERE iddoc = ?";
 
         try (Connection conexion = ConexionMySQL.getConexion();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
 
-            ps.setString(1, dni);
+            ps.setInt(1, dni);
 
             try (ResultSet rs = ps.executeQuery()) {
 
                 if (rs.next()) {
 
-                    Doctor paciente = new Doctor(
-                            rs.getString("dnipac"),
-                            rs.getString("apelpac"),
-                            rs.getString("nompac"),
-                            rs.getString("movilpac"),
-                            rs.getString("emailpac"),
-                            rs.getDate("nacpac").toLocalDate(),
-                            rs.getString("dirpac"),
-                            rs.getString("propac"),
-                            rs.getString("munipac"));
+                    Doctor doctor = new Doctor(
+                            rs.getInt("iddoc"),
+                            rs.getString("apeldoc"),
+                            rs.getString("nomdoc"),
+                            rs.getString("movildoc"),
+                            rs.getString("maildoc"),
+                            rs.getBoolean("coledoc"),
+                            rs.getString("espedoc"));
 
                     return doctor;
                 }
