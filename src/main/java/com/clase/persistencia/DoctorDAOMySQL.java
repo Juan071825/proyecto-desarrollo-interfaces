@@ -75,19 +75,19 @@ public class DoctorDAOMySQL implements DoctorDAO {
     }
 
 
-     public void  eliminarDoctor(String dni) {
+    public void  eliminarDoctor(Integer id) {
 
-        String sql = "DELETE FROM pacientes WHERE dnipac = ?";
+        String sql = "DELETE FROM doctores WHERE iddoc = ?";
 
         try(Connection conexion = ConexionMySQL.getConexion();
             PreparedStatement ps = conexion.prepareStatement((sql))) {
-                ps.setString(1, dni);
+                ps.setInt(1, id);
 
                 ps.executeUpdate();
 
-                System.out.println("Paciente eliminado correctamente");
+                System.out.println("Doctor eliminado correctamente");
             } catch(SQLException e) {
-                System.out.println("Error al eliminar el paciente: " + e.getMessage());
+                System.out.println("Error al eliminar el doctor: " + e.getMessage());
             }
 
     }
