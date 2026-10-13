@@ -51,9 +51,13 @@
                   </StackPane>
                </content>
             </Tab>
-            <Tab fx:id="pandoctores" text="Doctores">
+            <Tab fx:id="panpacientes" text="Doctores">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" StackPane.alignment="CENTER">
+                     <children>
+                        <fx:include source="doctores.fxml" />
+                     </children>
+                  </StackPane>
                </content>
             </Tab>
             <Tab text="Citas">

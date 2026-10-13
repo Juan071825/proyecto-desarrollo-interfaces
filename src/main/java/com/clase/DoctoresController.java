@@ -32,7 +32,7 @@ public class DoctoresController {
     @FXML
     private ComboBox<String> espedoc;
     @FXML
-    private Button btnguardarpac, btndelpac, btnlimpiarpac;
+    private Button btnguardardoc, btndeldoc, btnlimpiardoc;
 
     @FXML 
     private RadioButton coledocsi, coledocno;
@@ -76,11 +76,11 @@ public class DoctoresController {
         espedoc.setOnAction(e -> cargarEspecialidades());
         
 
-        coliddoc.setCellValueFactory(new PropertyValueFactory<>("dni"));
+        coliddoc.setCellValueFactory(new PropertyValueFactory<>("iddoc"));
         colapeldoc.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
         colnomdoc.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colmovildoc.setCellValueFactory(new PropertyValueFactory<>("movil"));
-        colespedoc.setCellValueFactory(new PropertyValueFactory<>("especialidades"));
+        colespedoc.setCellValueFactory(new PropertyValueFactory<>("especialidad"));
 
         tablaDoctores.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, nuevo) -> {
 
@@ -89,6 +89,8 @@ public class DoctoresController {
             }
 
         });
+
+        cargarDoctores();
 
     }
 
@@ -113,7 +115,7 @@ public class DoctoresController {
                 new InputStreamReader(is)).getAsJsonObject();
 
         // Obtenemos el array "provincias" del JSON
-        JsonArray especialidades = json.getAsJsonArray("provincias");
+        JsonArray especialidades = json.getAsJsonArray("especialidades");
 
         // Recorremos todas las provincias
         for (var especialidad : especialidades) {
@@ -137,6 +139,9 @@ public class DoctoresController {
         movildoc.setText("");
         emaildoc.setText("");
         espedoc.getSelectionModel().clearSelection();
+        coledocno.setSelected(false);
+        coledocsi.setSelected(false);
+        doctorExiste = false;
     }
 
 
@@ -225,6 +230,7 @@ public class DoctoresController {
             DoctorDAOMySQL dao = new DoctorDAOMySQL();
             dao.guardarDoctor(doctor);
         }
+        cargarDoctores();
     }
 
 
@@ -266,4 +272,23 @@ public class DoctoresController {
         espedoc.setValue(doctor.getEspecialidad());
 
     }
+
+
+    @FXML 
+    private void eliminarDoctor() {
+        Doctor seleccionado = tablaDoctores
+                .getSelectionModel()
+                .getSelectedItem();
+
+        if (seleccionado == null) {
+            return;
+        }
+
+        DoctorDAOMySQL dao = new DoctorDAOMySQL();
+        dao.eliminarDoctor(seleccionado.getIddoc());
+
+
+        cargarDoctores();
+    }
+    
 }

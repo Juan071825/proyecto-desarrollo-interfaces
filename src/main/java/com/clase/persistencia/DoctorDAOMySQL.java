@@ -14,7 +14,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
     @Override 
     public void guardarDoctor(Doctor doctor) {
         String sql = "INSERT INTO doctores"
-                    + "(apeldoc, nomdoc, movildoc, maildoc, coledoc, espedoc) " 
+                    + "(apeldoc, nomdoc, movildoc, emaildoc, coledoc, espedoc) " 
                     + "VALUES (?,?,?,?,?,?)";
 
         try (Connection conexion = ConexionMySQL.getConexion();
@@ -61,14 +61,14 @@ public class DoctorDAOMySQL implements DoctorDAO {
                         rs.getInt("iddoc"),
                         rs.getString("apeldoc"),                        
                         rs.getString("nomdoc"),
-                        rs.getString("movilpac"),
+                        rs.getString("movildoc"),
                         rs.getString("espedoc"));
 
                 doctores.add(doctor);
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al cargar los pacientes: " + e.getMessage());
+            System.out.println("Error al cargar los doctores: " + e.getMessage());
         }
 
         return doctores;
@@ -97,7 +97,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
     public Doctor buscaDocId(Integer id) {
 
         String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
-                + " maildoc, espedoc "
+                + " emaildoc, espedoc "
                 + " FROM doctores "
                 + " WHERE iddoc = ?";
 
@@ -116,7 +116,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
                             rs.getString("nomdoc"),
                             rs.getBoolean("coledoc"),
                             rs.getString("movildoc"),
-                            rs.getString("maildoc"),
+                            rs.getString("emaildoc"),
                             rs.getString("espedoc"));
 
                     return doctor;
@@ -124,7 +124,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar el paciente: " + e.getMessage());
+            System.out.println("Error al buscar el doctor: " + e.getMessage());
         }
 
         return null;
@@ -138,8 +138,8 @@ public class DoctorDAOMySQL implements DoctorDAO {
                 + "nomdoc = ?, "
                 + "coledoc = ?, "
                 + "movildoc = ?, "
-                + "maildoc = ?, "
-                + "espedoc = ?, "
+                + "emaildoc = ?, "
+                + "espedoc = ? "
                 + "WHERE iddoc = ?";
 
         try (Connection conexion = ConexionMySQL.getConexion();
@@ -147,7 +147,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
             ps.setString(1, doctor.getApellidos());
             ps.setString(2, doctor.getNombre());
-            ps.setString(3, String.valueOf(doctor.getColegiado()));
+            ps.setBoolean(3,doctor.getColegiado());
             ps.setString(4, doctor.getMovil());
             ps.setString(5, doctor.getEmail());
             ps.setString(6, doctor.getEspecialidad());
@@ -166,7 +166,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
     }
 
 
-     public Doctor buscaPacdni(String dni) {
+     /*public Doctor buscaPacdni(String dni) {
 
         String sql = "SELECT dnipac, apelpac, nompac, movilpac, "
                 + " emailpac, nacpac, dirpac, propac, munipac "
@@ -193,13 +193,13 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
                     return doctor;
                 }
-            }
+            } 
 
         } catch (SQLException e) {
             System.out.println("Error al buscar el doctor: " + e.getMessage());
         }
 
         return null;
-    }
+    } */
 }
 
