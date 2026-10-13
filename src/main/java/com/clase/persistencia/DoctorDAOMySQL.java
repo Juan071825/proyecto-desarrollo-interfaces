@@ -23,7 +23,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
                 ps.setString(1, doctor.getApellidos());
                 ps.setString(2, doctor.getNombre());
                 ps.setString(3, doctor.getMovil());
-                ps.setString(4, doctor.getMail());
+                ps.setString(4, doctor.getEmail());
                 ps.setBoolean(5, doctor.getColegiado());
                 ps.setString(6, doctor.getEspecialidad());
 
@@ -94,7 +94,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
 
     // Buscar un paciente por DNI
-    public Doctor buscaDoctorId(Integer dni) {
+    public Doctor buscaDocId(Integer id) {
 
         String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
                 + " maildoc, espedoc "
@@ -104,7 +104,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
         try (Connection conexion = ConexionMySQL.getConexion();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
 
-            ps.setInt(1, dni);
+            ps.setInt(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
 
@@ -114,9 +114,9 @@ public class DoctorDAOMySQL implements DoctorDAO {
                             rs.getInt("iddoc"),
                             rs.getString("apeldoc"),
                             rs.getString("nomdoc"),
+                            rs.getBoolean("coledoc"),
                             rs.getString("movildoc"),
                             rs.getString("maildoc"),
-                            rs.getBoolean("coledoc"),
                             rs.getString("espedoc"));
 
                     return doctor;
@@ -131,33 +131,30 @@ public class DoctorDAOMySQL implements DoctorDAO {
     }
 
 
-    public void modificarPaciente(String dni, Doctor doctor) {
+    public void modificarDoctor(Integer iddoc, Doctor doctor) {
 
-        String sql = "UPDATE pacientes SET "
-                + "apelpac = ?, "
-                + "nompac = ?, "
-                + "movilpac = ?, "
-                + "emailpac = ?, "
-                + "nacpac = ?, "
-                + "dirpac = ?, "
-                + "propac = ?, "
-                + "munipac = ? "
-                + "WHERE dnipac = ?";
+        String sql = "UPDATE doctores SET "
+                + "apeldoc = ?, "
+                + "nomdoc = ?, "
+                + "coledoc = ?, "
+                + "movildoc = ?, "
+                + "maildoc = ?, "
+                + "espedoc = ?, "
+                + "WHERE iddoc = ?";
 
         try (Connection conexion = ConexionMySQL.getConexion();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, doctor.getApellidos());
             ps.setString(2, doctor.getNombre());
-            ps.setString(3, doctor.getMovil());
-            ps.setString(4, doctor.getEmail());
-            ps.setDate(5, java.sql.Date.valueOf(doctor.getNacimiento()));
-            ps.setString(6, doctor.getDireccion());
-            ps.setString(7, doctor.getProvincia());
-            ps.setString(8, doctor.getMunicipio());
+            ps.setString(3, String.valueOf(doctor.getColegiado()));
+            ps.setString(4, doctor.getMovil());
+            ps.setString(5, doctor.getEmail());
+            ps.setString(6, doctor.getEspecialidad());
+            
 
             // DNI original para localizar el paciente
-            ps.setString(9, dni);
+            ps.setInt(7, iddoc);
 
             ps.executeUpdate();
 
@@ -185,23 +182,21 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
                 if (rs.next()) {
 
-                    Doctor paciente = new Doctor(
-                            rs.getString("dnipac"),
-                            rs.getString("apelpac"),
-                            rs.getString("nompac"),
-                            rs.getString("movilpac"),
-                            rs.getString("emailpac"),
-                            rs.getDate("nacpac").toLocalDate(),
-                            rs.getString("dirpac"),
-                            rs.getString("propac"),
-                            rs.getString("munipac"));
+                    Doctor doctor = new Doctor(
+                            rs.getInt("iddoc"),
+                            rs.getString("apeldoc"),
+                            rs.getString("nomdoc"),
+                            rs.getBoolean("coledoc"),
+                            rs.getString("movildoc"),
+                            rs.getString("maildoc"),
+                            rs.getString("espedoc"));
 
-                    return paciente;
+                    return doctor;
                 }
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar el paciente: " + e.getMessage());
+            System.out.println("Error al buscar el doctor: " + e.getMessage());
         }
 
         return null;

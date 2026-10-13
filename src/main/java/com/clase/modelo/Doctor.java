@@ -10,7 +10,7 @@ public class Doctor {
     private String espedoc;
 
     public Doctor(Integer iddoc, String apeldoc, String nomdoc, Boolean coledoc,
-            String movildoc, String emailpac,
+            String movildoc, String emaildoc,
             String espedoc) {
         this.iddoc = iddoc;
         this.nomdoc = nomdoc;
@@ -22,7 +22,7 @@ public class Doctor {
     }
 
     public Doctor(String apeldoc, String nomdoc, Boolean coledoc,
-            String movildoc, String emailpac,
+            String movildoc, String emaildoc,
             String espedoc) {
         this.nomdoc = nomdoc;
         this.apeldoc = apeldoc;

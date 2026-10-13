@@ -9,5 +9,5 @@ public interface DoctorDAO {
     /*Doctor buscarDoctor(Integer id);
     void eliminarDoctor(Integer id);
     void modificarDoctor(Integer id, Doctor paciente); */
-    Doctor buscaDocId(String id);
+    Doctor buscaDocId(Integer id);
 }

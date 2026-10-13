@@ -4,33 +4,23 @@ import com.clase.modelo.Doctor;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.time.LocalDate;
 import java.util.List;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.DoctorDAOMySQL;
-import com.clase.persistencia.PacienteDAOMySQL;
 import com.google.gson.JsonObject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 
@@ -257,7 +247,7 @@ public class DoctoresController {
 
         DoctorDAOMySQL dao = new DoctorDAOMySQL();
 
-        Doctor doctor = dao.buscaDoctorId(doctorSelect.getIddoc());
+        Doctor doctor = dao.buscaDocId(doctorSelect.getIddoc());
 
         if (doctor == null) {
             return;
