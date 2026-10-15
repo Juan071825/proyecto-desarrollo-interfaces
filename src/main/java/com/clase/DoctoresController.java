@@ -5,13 +5,16 @@ import com.clase.modelo.Doctor;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Optional;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.DoctorDAOMySQL;
 import com.google.gson.JsonObject;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -222,13 +225,43 @@ public class DoctoresController {
 
         Doctor doctor = new Doctor(apellidos, nombre, colegiado, movil, email, especialidad);        
 
+;
         if (doctorExiste) {
-            DoctorDAOMySQL dao = new DoctorDAOMySQL();
-            dao.modificarDoctor(doctor.getIddoc(), doctor);
-            doctorExiste = false;
+            Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
+            alert3.setTitle("Aviso");
+            alert3.setHeaderText(null);
+            alert3.setContentText("¿Desea modificar doctor?");
+            Optional<ButtonType> result = alert3.showAndWait();
+            if(result.isPresent() && result.get() == ButtonType.OK){
+                DoctorDAOMySQL dao = new DoctorDAOMySQL();
+                dao.modificarDoctor(doctor.getIddoc(), doctor);
+                doctorExiste = false;
+                 Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
+                alert4.setTitle("Información");
+                alert4.setHeaderText(null);
+                alert4.setContentText("Doctor modificado");
+                alert4.showAndWait();
+            } else {
+                return;
+            }
         } else {
-            DoctorDAOMySQL dao = new DoctorDAOMySQL();
-            dao.guardarDoctor(doctor);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Información");
+            alert.setHeaderText(null);
+            alert.setContentText("¿Desea guardar doctor?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                DoctorDAOMySQL dao = new DoctorDAOMySQL();
+                dao.guardarDoctor(doctor);
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setTitle("Información");
+                alert2.setHeaderText(null);
+                alert2.setContentText("Doctor guardado");
+                alert2.showAndWait();
+            } else {
+                return;
+            }
         }
         cargarDoctores();
     }
@@ -284,11 +317,37 @@ public class DoctoresController {
             return;
         }
 
-        DoctorDAOMySQL dao = new DoctorDAOMySQL();
-        dao.eliminarDoctor(seleccionado.getIddoc());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Información");
+        alert.setHeaderText(null);
+        alert.setContentText("¿Desea eliminar doctor?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+            alert2.setTitle("Información");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Doctor eliminado");
+            alert2.showAndWait();
+            DoctorDAOMySQL dao = new DoctorDAOMySQL();
+            dao.eliminarDoctor(seleccionado.getIddoc());
+        } else {
+            return;
+        }
+
+
 
 
         cargarDoctores();
     }
     
+
+        @FXML
+    private void buscadocsporEspecialidad(){
+
+        DoctorDAOMySQL dao = new DoctorDAOMySQL();
+        List<Doctor> Doctores = dao.cargardocsporEspec(espedoc.getValue());
+        tablaDoctores.getItems().setAll(Doctores);
+
+    }
+
 }

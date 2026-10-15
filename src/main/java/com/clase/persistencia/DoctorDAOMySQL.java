@@ -147,7 +147,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
             ps.setString(1, doctor.getApellidos());
             ps.setString(2, doctor.getNombre());
-            ps.setBoolean(3,doctor.getColegiado());
+            ps.setBoolean(3,doctor.getColegiado() != null && doctor.getColegiado());
             ps.setString(4, doctor.getMovil());
             ps.setString(5, doctor.getEmail());
             ps.setString(6, doctor.getEspecialidad());
@@ -158,10 +158,10 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
             ps.executeUpdate();
 
-            System.out.println("Paciente modificado correctamente.");
+            System.out.println("Doctor modificado correctamente.");
 
         } catch (SQLException e) {
-            System.out.println("Error al modificar el paciente: " + e.getMessage());
+            System.out.println("Error al modificar el doctor: " + e.getMessage());
         }
     }
 
@@ -201,5 +201,41 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
         return null;
     } */
+
+
+    public List<Doctor> cargardocsporEspec(String espedoc){
+        List<Doctor> doctores = new ArrayList<>();
+         String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
+                + " emaildoc, espedoc "
+                + " FROM doctores "
+                + " WHERE espedoc = ?";
+
+        try (Connection conexion = ConexionMySQL.getConexion();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, espedoc);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+
+                    Doctor doctor = new Doctor(
+                            rs.getInt("iddoc"),
+                            rs.getString("apeldoc"),
+                            rs.getString("nomdoc"),
+                            rs.getBoolean("coledoc"),
+                            rs.getString("movildoc"),
+                            rs.getString("emaildoc"),
+                            rs.getString("espedoc"));
+
+                    doctores.add(doctor);
+                }
+                return doctores;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el doctor: " + e.getMessage());
+        }
+    }
 }
 
