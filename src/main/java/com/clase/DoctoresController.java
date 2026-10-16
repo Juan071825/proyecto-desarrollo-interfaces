@@ -6,12 +6,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.DoctorDAOMySQL;
 import com.google.gson.JsonObject;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -19,15 +21,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
+import java.net.URL;
 
-public class DoctoresController {
+
+
+public class DoctoresController implements Initializable {
 
     @FXML
     private TextField iddoc, apeldoc, nomdoc, movildoc, emaildoc;
@@ -48,7 +52,7 @@ public class DoctoresController {
 
         boolean doctorExiste = false;
     
-    public void initialize() {
+    public void initialize(URL url, ResourceBundle rb) {
 
         System.out.println("INITIALIZE EJECUTADO");
 
@@ -92,6 +96,8 @@ public class DoctoresController {
             }
 
         });
+
+        
 
         cargarDoctores();
 
@@ -215,6 +221,7 @@ public class DoctoresController {
     @FXML
     private void guardarDoctor() {
 
+        String id = iddoc.getText(); 
         String apellidos = apeldoc.getText();
         String nombre = nomdoc.getText();
         String movil = movildoc.getText();
@@ -231,10 +238,10 @@ public class DoctoresController {
             alert3.setTitle("Aviso");
             alert3.setHeaderText(null);
             alert3.setContentText("¿Desea modificar doctor?");
-            Optional<ButtonType> result = alert3.showAndWait();
-            if(result.isPresent() && result.get() == ButtonType.OK){
+            Optional<ButtonType> result2 = alert3.showAndWait();
+            if(result2.isPresent() && result2.get() == ButtonType.OK){
                 DoctorDAOMySQL dao = new DoctorDAOMySQL();
-                dao.modificarDoctor(doctor.getIddoc(), doctor);
+                dao.modificarDoctor(Integer.parseInt(id), doctor);
                 doctorExiste = false;
                  Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
                 alert4.setTitle("Información");
@@ -255,7 +262,7 @@ public class DoctoresController {
                 DoctorDAOMySQL dao = new DoctorDAOMySQL();
                 dao.guardarDoctor(doctor);
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                alert2.setTitle("Información");
+                alert2.setTitle("Aviso");
                 alert2.setHeaderText(null);
                 alert2.setContentText("Doctor guardado");
                 alert2.showAndWait();
@@ -276,6 +283,8 @@ public class DoctoresController {
 
     @FXML 
     private void cargarDoctor() {
+        coledocno.setSelected(false);
+        coledocsi.setSelected(false);
         Doctor doctorSelect = tablaDoctores.getSelectionModel().getSelectedItem();
 
         if (doctorSelect == null) {
@@ -286,7 +295,7 @@ public class DoctoresController {
 
         DoctorDAOMySQL dao = new DoctorDAOMySQL();
 
-        Doctor doctor = dao.buscaDocId(doctorSelect.getIddoc());
+        Doctor doctor = dao.buscaDocporId(doctorSelect.getIddoc());
 
         if (doctor == null) {
             return;
@@ -334,9 +343,6 @@ public class DoctoresController {
             return;
         }
 
-
-
-
         cargarDoctores();
     }
     
@@ -345,9 +351,8 @@ public class DoctoresController {
     private void buscadocsporEspecialidad(){
 
         DoctorDAOMySQL dao = new DoctorDAOMySQL();
-        List<Doctor> Doctores = dao.cargardocsporEspec(espedoc.getValue());
+        List<Doctor> Doctores = dao.cargarDoctoresEspec(espedoc.getValue());
         tablaDoctores.getItems().setAll(Doctores);
 
     }
-
 }

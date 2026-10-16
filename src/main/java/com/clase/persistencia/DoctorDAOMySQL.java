@@ -6,14 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DoctorDAOMySQL implements DoctorDAO {
     
     @Override 
     public void guardarDoctor(Doctor doctor) {
-        String sql = "INSERT INTO doctores"
+        String sql = "INSERT INTO doctores "
                     + "(apeldoc, nomdoc, movildoc, emaildoc, coledoc, espedoc) " 
                     + "VALUES (?,?,?,?,?,?)";
 
@@ -35,17 +37,15 @@ public class DoctorDAOMySQL implements DoctorDAO {
             } catch (SQLException e) {
                 System.out.println("Error al guardar el doctor: " + e.getMessage());
             }
-
     }
 
 
-    // seleccionar pacientes de la bbdd
+    // seleccionar doctores de la bbdd
     @Override
     public List<Doctor> cargarDoctores() {
 
         List<Doctor> doctores = new ArrayList<>();
 
-        // Solo obtenemos los campos que necesitamos para la tabla
         String sql = "SELECT * "
                 + "FROM doctores "
                 + "ORDER BY apeldoc, nomdoc";
@@ -86,15 +86,15 @@ public class DoctorDAOMySQL implements DoctorDAO {
                 ps.executeUpdate();
 
                 System.out.println("Doctor eliminado correctamente");
-            } catch(SQLException e) {
-                System.out.println("Error al eliminar el doctor: " + e.getMessage());
-            }
 
+            } catch(SQLException e) {
+                System.out.println("Error al eliminar doctor: " + e.getMessage());
+            }
     }
 
 
     // Buscar un paciente por DNI
-    public Doctor buscaDocId(Integer id) {
+    public Doctor buscaDocporId(Integer id) {
 
         String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
                 + " emaildoc, espedoc "
@@ -112,8 +112,8 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
                     Doctor doctor = new Doctor(
                             rs.getInt("iddoc"),
-                            rs.getString("apeldoc"),
                             rs.getString("nomdoc"),
+                            rs.getString("apeldoc"),
                             rs.getBoolean("coledoc"),
                             rs.getString("movildoc"),
                             rs.getString("emaildoc"),
@@ -154,6 +154,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
             
 
             // DNI original para localizar el paciente
+            System.out.println(iddoc);
             ps.setInt(7, iddoc);
 
             ps.executeUpdate();
@@ -203,7 +204,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
     } */
 
 
-    public List<Doctor> cargardocsporEspec(String espedoc){
+    public List<Doctor> cargarDoctoresEspec(String espedoc){
         List<Doctor> doctores = new ArrayList<>();
          String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
                 + " emaildoc, espedoc "
@@ -217,12 +218,11 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
 
-                if (rs.next()) {
-
+                while (rs.next()) {
                     Doctor doctor = new Doctor(
                             rs.getInt("iddoc"),
-                            rs.getString("apeldoc"),
                             rs.getString("nomdoc"),
+                            rs.getString("apeldoc"),
                             rs.getBoolean("coledoc"),
                             rs.getString("movildoc"),
                             rs.getString("emaildoc"),
@@ -230,12 +230,12 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
                     doctores.add(doctor);
                 }
-                return doctores;
             }
 
         } catch (SQLException e) {
             System.out.println("Error al buscar el doctor: " + e.getMessage());
         }
+        return doctores;
     }
 }
 

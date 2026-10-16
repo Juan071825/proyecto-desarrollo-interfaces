@@ -6,8 +6,8 @@ public interface DoctorDAO {
     
     void guardarDoctor(Doctor doctor);
     List<Doctor> cargarDoctores();
-    List<Doctor> buscadocsporEspecialidad(String espedoc);
+    List<Doctor> cargarDoctoresEspec(String espedoc);
     void eliminarDoctor(Integer id);
     void modificarDoctor(Integer id, Doctor paciente);
-    Doctor buscaDocId(Integer id);
+    Doctor buscaDocporId(Integer id);
 }
