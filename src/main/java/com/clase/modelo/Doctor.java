@@ -13,8 +13,8 @@ public class Doctor {
             String movildoc, String emaildoc,
             String espedoc) {
         this.iddoc = iddoc;
-        this.nomdoc = nomdoc;
         this.apeldoc = apeldoc;
+        this.nomdoc = nomdoc;
         this.movildoc = movildoc;
         this.coledoc = coledoc;
         this.emaildoc = emaildoc;
@@ -24,8 +24,8 @@ public class Doctor {
     public Doctor(String apeldoc, String nomdoc, Boolean coledoc,
             String movildoc, String emaildoc,
             String espedoc) {
-        this.nomdoc = nomdoc;
         this.apeldoc = apeldoc;
+        this.nomdoc = nomdoc;
         this.movildoc = movildoc;
         this.coledoc = coledoc;
         this.emaildoc = emaildoc;

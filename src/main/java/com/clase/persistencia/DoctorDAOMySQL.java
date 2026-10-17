@@ -96,7 +96,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
     // Buscar un paciente por DNI
     public Doctor buscaDocporId(Integer id) {
 
-        String sql = "SELECT iddoc, nomdoc, apeldoc, coledoc, movildoc, "
+        String sql = "SELECT iddoc, apeldoc, nomdoc, coledoc, movildoc, "
                 + " emaildoc, espedoc "
                 + " FROM doctores "
                 + " WHERE iddoc = ?";
@@ -112,12 +112,13 @@ public class DoctorDAOMySQL implements DoctorDAO {
 
                     Doctor doctor = new Doctor(
                             rs.getInt("iddoc"),
-                            rs.getString("nomdoc"),
                             rs.getString("apeldoc"),
+                            rs.getString("nomdoc"),
                             rs.getBoolean("coledoc"),
                             rs.getString("movildoc"),
                             rs.getString("emaildoc"),
-                            rs.getString("espedoc"));
+                            rs.getString("espedoc")
+                        );
 
                     return doctor;
                 }

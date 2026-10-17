@@ -230,10 +230,11 @@ public class DoctoresController implements Initializable {
         String especialidad = espedoc.getValue();
 
 
-        Doctor doctor = new Doctor(apellidos, nombre, colegiado, movil, email, especialidad);        
+        Doctor doctor = new Doctor(apellidos, nombre, colegiado, movil, email, especialidad);      
 
-;
-        if (doctorExiste) {
+        boolean modificando = !iddoc.getText().isBlank();
+
+        if (modificando) {
             Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
             alert3.setTitle("Aviso");
             alert3.setHeaderText(null);
@@ -242,8 +243,7 @@ public class DoctoresController implements Initializable {
             if(result2.isPresent() && result2.get() == ButtonType.OK){
                 DoctorDAOMySQL dao = new DoctorDAOMySQL();
                 dao.modificarDoctor(Integer.parseInt(id), doctor);
-                doctorExiste = false;
-                 Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
                 alert4.setTitle("Información");
                 alert4.setHeaderText(null);
                 alert4.setContentText("Doctor modificado");
@@ -254,7 +254,7 @@ public class DoctoresController implements Initializable {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Información");
+            alert.setTitle("Aviso");
             alert.setHeaderText(null);
             alert.setContentText("¿Desea guardar doctor?");
             Optional<ButtonType> result = alert.showAndWait();
@@ -326,8 +326,8 @@ public class DoctoresController implements Initializable {
             return;
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Información");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Aviso");
         alert.setHeaderText(null);
         alert.setContentText("¿Desea eliminar doctor?");
         Optional<ButtonType> result = alert.showAndWait();
