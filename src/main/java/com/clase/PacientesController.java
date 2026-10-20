@@ -313,7 +313,6 @@ public class PacientesController {
         String movil = movilpac.getText();
         String email = emailpac.getText();
         String direccion = dirpac.getText();
-
         String provincia = propac.getValue();
         String localidad = munipac.getValue();
 
@@ -321,14 +320,23 @@ public class PacientesController {
         Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);        
 
         if (pacienteExiste) {
-            PacienteDAOMySQL dao = new PacienteDAOMySQL();
-            dao.modificarPaciente(paciente.getDni(), paciente);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Información");
-            alert.setHeaderText(null);
-            alert.setContentText("Paciente modificado correctamente");
-            alert.showAndWait();
-            pacienteExiste = false;
+             Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
+            alert3.setTitle("Aviso");
+            alert3.setHeaderText(null);
+            alert3.setContentText("¿Desea modificar paciente?");
+            Optional<ButtonType> result2 = alert3.showAndWait();
+            if(result2.isPresent() && result2.get() == ButtonType.OK){
+                PacienteDAOMySQL dao = new PacienteDAOMySQL();
+                dao.modificarPaciente(paciente.getDni(), paciente);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("Paciente modificado correctamente");
+                alert.showAndWait();
+                pacienteExiste = false;
+            } else {
+                return;
+            }
             buscaPacDni();
         } else {
             PacienteDAOMySQL dao = new PacienteDAOMySQL();
