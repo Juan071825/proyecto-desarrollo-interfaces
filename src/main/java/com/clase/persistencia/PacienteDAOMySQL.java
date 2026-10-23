@@ -170,6 +170,8 @@ public class PacienteDAOMySQL implements PacienteDAO {
 
             System.out.println("Paciente modificado correctamente.");
 
+            
+
         } catch (SQLException e) {
             System.out.println("Error al modificar el paciente: " + e.getMessage());
         }

@@ -107,4 +107,12 @@ public class Paciente {
     public void setMunicipio(String munipac) {
         this.munipac = munipac;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente [dnipac=" + dnipac + ", apelpac=" + apelpac + ", nompac=" + nompac + ", movilpac=" + movilpac
+                + ", emailpac=" + emailpac + ", nacpac=" + nacpac + ", dirpac=" + dirpac + ", propac=" + propac
+                + ", munipac=" + munipac + "]";
+    }
 }
+

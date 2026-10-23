@@ -317,35 +317,51 @@ public class PacientesController {
         String localidad = munipac.getValue();
 
 
-        Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);        
+        Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);
 
-        if (pacienteExiste) {
-             Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
+        PacienteDAOMySQL dao = new PacienteDAOMySQL();
+
+        Paciente pacienteEncontrado = dao.buscaPacdni(paciente.getDni());
+
+        System.out.println("Paciente encontrado: " + pacienteEncontrado);
+
+        if ( pacienteEncontrado != null) {
+            System.out.println("Paciente encontrado distinto de null");
+            Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
             alert3.setTitle("Aviso");
             alert3.setHeaderText(null);
             alert3.setContentText("¿Desea modificar paciente?");
             Optional<ButtonType> result2 = alert3.showAndWait();
             if(result2.isPresent() && result2.get() == ButtonType.OK){
-                PacienteDAOMySQL dao = new PacienteDAOMySQL();
-                dao.modificarPaciente(paciente.getDni(), paciente);
+                System.out.println("Botón OK pulsado");
+                dao.modificarPaciente(pacienteEncontrado.getDni(), paciente);
+                System.out.println("Paciente modificado: " + paciente);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
                 alert.setContentText("Paciente modificado correctamente");
                 alert.showAndWait();
-                pacienteExiste = false;
+                cargarPacientes();
             } else {
                 return;
             }
             buscaPacDni();
         } else {
-            PacienteDAOMySQL dao = new PacienteDAOMySQL();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Información");
-            alert.setHeaderText(null);
-            alert.setContentText("Paciente guardado correctamente");
-            alert.showAndWait();
-            dao.guardarPaciente(paciente);
+
+            Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+            alert2.setTitle("Aviso");
+            alert2.setHeaderText(null);
+            alert2.setContentText("¿Desea guardar paciente?");
+            Optional<ButtonType> result = alert2.showAndWait();
+            if(result.isPresent() && result.get() == ButtonType.OK){
+                dao.guardarPaciente(paciente);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("Paciente guardado correctamente");
+                alert.showAndWait();
+        } else {
+            return;
         }
 
 
@@ -364,13 +380,17 @@ public class PacientesController {
         System.out.println("Provincia: " + provincia);
         System.out.println("Localidad: " + localidad);
         System.out.println("==================");
+        }
     }
+
 
     @FXML 
     private void cargarPacientes() {
         PacienteDAOMySQL dao = new PacienteDAOMySQL();
         List<Paciente> pacientes = dao.cargarPacientes();
         tablaPacientes.getItems().setAll(pacientes);
+
+        System.out.println("Cargar pacientes: " + pacientes);
     }
 
 
@@ -444,6 +464,8 @@ public class PacientesController {
         dirpac.setText(paciente.getDireccion());
         propac.setValue(paciente.getProvincia());
         munipac.setValue(paciente.getProvincia());
+
+        System.out.println("cargar paciente: " + paciente);
     }
 
 
