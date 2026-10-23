@@ -402,14 +402,16 @@ public class PacientesController {
         alert.setContentText("¿Desea eliminar el paciente?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK){
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+            alert2.setTitle("Confirmación");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Paciente eliminado");
+            Optional<ButtonType> result2 = alert2.showAndWait();
             PacienteDAOMySQL dao = new PacienteDAOMySQL();
             dao.eliminarPaciente((seleccionado.getDni()));
         } else {
             return;
         }
-
-
-       
 
         cargarPacientes();
     }
