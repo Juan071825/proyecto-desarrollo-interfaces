@@ -96,4 +96,10 @@ public class Doctor {
     public void setColegiado(Boolean coledoc) {
         this.coledoc = coledoc;
     }
+
+    @Override
+    public String toString() {
+        return "Doctor [iddoc=" + iddoc + ", apeldoc=" + apeldoc + ", nomdoc=" + nomdoc + ", coledoc=" + coledoc
+                + ", movildoc=" + movildoc + ", emaildoc=" + emaildoc + ", espedoc=" + espedoc + "]";
+    }
 }

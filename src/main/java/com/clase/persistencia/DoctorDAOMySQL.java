@@ -236,6 +236,7 @@ public class DoctorDAOMySQL implements DoctorDAO {
         } catch (SQLException e) {
             System.out.println("Error al buscar el doctor: " + e.getMessage());
         }
+        System.out.println("Doctores por especialidad: " + doctores);
         return doctores;
     }
 }

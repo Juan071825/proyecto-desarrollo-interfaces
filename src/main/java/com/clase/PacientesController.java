@@ -326,14 +326,14 @@ public class PacientesController {
         System.out.println("Paciente encontrado: " + pacienteEncontrado);
 
         if ( pacienteEncontrado != null) {
-            System.out.println("Paciente encontrado distinto de null");
+            System.out.println("Paciente encontrado");
             Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
             alert3.setTitle("Aviso");
             alert3.setHeaderText(null);
             alert3.setContentText("¿Desea modificar paciente?");
             Optional<ButtonType> result2 = alert3.showAndWait();
             if(result2.isPresent() && result2.get() == ButtonType.OK){
-                System.out.println("Botón OK pulsado");
+                System.out.println("Botón Aceptar pulsado");
                 dao.modificarPaciente(pacienteEncontrado.getDni(), paciente);
                 System.out.println("Paciente modificado: " + paciente);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -341,29 +341,31 @@ public class PacientesController {
                 alert.setHeaderText(null);
                 alert.setContentText("Paciente modificado correctamente");
                 alert.showAndWait();
-                cargarPacientes();
             } else {
+                System.out.println("Botón Cancelar pulsado");
                 return;
             }
             buscaPacDni();
         } else {
-
+            System.out.println("Paciente no encontrado");
             Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
             alert2.setTitle("Aviso");
             alert2.setHeaderText(null);
             alert2.setContentText("¿Desea guardar paciente?");
             Optional<ButtonType> result = alert2.showAndWait();
             if(result.isPresent() && result.get() == ButtonType.OK){
+                System.out.println("Botón Aceptar pulsado");
                 dao.guardarPaciente(paciente);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Información");
                 alert.setHeaderText(null);
                 alert.setContentText("Paciente guardado correctamente");
                 alert.showAndWait();
-        } else {
-            return;
+            } else {
+                System.out.println("Botón Cancelar pulsado");
+                return;
+            }
         }
-
 
         //cargar paciente en la tabla
         cargarPacientes();
@@ -380,7 +382,6 @@ public class PacientesController {
         System.out.println("Provincia: " + provincia);
         System.out.println("Localidad: " + localidad);
         System.out.println("==================");
-        }
     }
 
 
@@ -405,6 +406,7 @@ public class PacientesController {
         nacpac.setValue(null);
         propac.getSelectionModel().clearSelection();
         munipac.getSelectionModel().clearSelection();
+        System.out.println("Campos vaciados");
     }
 
    
@@ -422,6 +424,7 @@ public class PacientesController {
         alert.setContentText("¿Desea eliminar el paciente?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK){
+            System.out.println("Botón Aceptar pulsado");
             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
             alert2.setTitle("Confirmación");
             alert2.setHeaderText(null);
@@ -429,7 +432,9 @@ public class PacientesController {
             Optional<ButtonType> result2 = alert2.showAndWait();
             PacienteDAOMySQL dao = new PacienteDAOMySQL();
             dao.eliminarPaciente((seleccionado.getDni()));
+            System.out.println("Paciente eliminado");
         } else {
+            System.out.println("Botón Cancelar pulsado");
             return;
         }
 
@@ -475,6 +480,7 @@ public class PacientesController {
         Paciente paciente = dao.buscaPacdni(dnipac.getText());
 
         if (paciente == null){
+            System.out.println("El pacientw no existe");
            return;
         } else {
             pacienteExiste = true;
@@ -489,5 +495,7 @@ public class PacientesController {
         dirpac.setText(paciente.getDireccion());
         propac.setValue(paciente.getProvincia());
         munipac.setValue(paciente.getMunicipio());
+
+        System.out.println("El paciente es " + paciente);
     }
 }

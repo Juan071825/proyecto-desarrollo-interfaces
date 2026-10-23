@@ -98,6 +98,19 @@ public class DoctoresController implements Initializable {
         });
 
         
+        coledocsi.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                coledocno.setSelected(false);
+            }
+        });
+
+
+        coledocno.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                coledocsi.setSelected(false);
+            }
+        });
+
 
         cargarDoctores();
 
@@ -279,6 +292,8 @@ public class DoctoresController implements Initializable {
         DoctorDAOMySQL dao = new DoctorDAOMySQL();
         List<Doctor> doctores = dao.cargarDoctores();
         tablaDoctores.getItems().setAll(doctores);
+
+        System.out.println("Cargar doctores: " + doctores);
     }
 
     @FXML 
@@ -313,6 +328,7 @@ public class DoctoresController implements Initializable {
         }
         espedoc.setValue(doctor.getEspecialidad());
 
+        System.out.println("cargar paciente: " + doctor);
     }
 
 
@@ -332,14 +348,16 @@ public class DoctoresController implements Initializable {
         alert.setContentText("¿Desea eliminar doctor?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("Botón Aceptar pulsado");
+            DoctorDAOMySQL dao = new DoctorDAOMySQL();
+            dao.eliminarDoctor(seleccionado.getIddoc());
             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
             alert2.setTitle("Información");
             alert2.setHeaderText(null);
             alert2.setContentText("Doctor eliminado");
             alert2.showAndWait();
-            DoctorDAOMySQL dao = new DoctorDAOMySQL();
-            dao.eliminarDoctor(seleccionado.getIddoc());
         } else {
+            System.out.println("Botón Cancelar pulsado");
             return;
         }
 

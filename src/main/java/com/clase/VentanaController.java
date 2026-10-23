@@ -32,8 +32,16 @@ public class VentanaController {
 
     @FXML 
     private void abrirDir() {
+        String so = System.getProperty("os.name").toLowerCase();
+        String carpeta = System.getProperty("user.home");
         try {
-            new ProcessBuilder("explorer.exe").start();
+            if (so.contains("win")){
+                new ProcessBuilder("explorer.exe").start();
+                System.out.println("Explorer de Windows abierto.");
+            } else {
+                new ProcessBuilder("xdg-open", carpeta).start();
+                System.out.println("XPG de Linux abierto.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

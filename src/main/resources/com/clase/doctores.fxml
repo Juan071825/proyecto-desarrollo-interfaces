@@ -114,7 +114,7 @@
                </HBox.margin>
             </Label>
             <ComboBox fx:id="espedoc" prefWidth="150.0" />
-            <Button fx:id="btnBuscarDoc" mnemonicParsing="false">
+            <Button fx:id="btnBuscarDoc" mnemonicParsing="false" onAction="#buscadocsporEspecialidad">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
