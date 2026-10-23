@@ -58,7 +58,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/icone-fichier-document-vert.png" />
+                              <Image url="@img/folder.png" />
                            </image>
                         </ImageView>
                      </graphic>

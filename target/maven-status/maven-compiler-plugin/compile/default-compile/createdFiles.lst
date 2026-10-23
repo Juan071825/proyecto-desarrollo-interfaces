@@ -1,8 +1,5 @@
-com/clase/persistencia/PacienteDAOMySQL.class
-com/clase/AcercadeController.class
 com/clase/DoctoresController.class
 com/clase/persistencia/DoctorDAOMySQL.class
-com/clase/persistencia/DoctorDAO.class
 com/clase/App.class
 com/clase/modelo/Paciente.class
 com/clase/persistencia/ConexionMySQL.class
@@ -11,3 +8,6 @@ module-info.class
 com/clase/PacientesController.class
 com/clase/modelo/Doctor.class
 com/clase/persistencia/PacienteDAO.class
+com/clase/persistencia/PacienteDAOMySQL.class
+com/clase/AcercadeController.class
+com/clase/persistencia/DoctorDAO.class

@@ -23,6 +23,10 @@ public class App extends Application {
                 stage.setScene(scene);
                 stage.setMaximized(true);
                 stage.show();
+
+            scene.getStylesheets().add(
+                getClass().getResource("/com/clase/css/estilos.css").toExternalForm()
+            );
     }
 
     public static void main(String[] args) {
