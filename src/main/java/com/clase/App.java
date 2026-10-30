@@ -22,11 +22,14 @@ public class App extends Application {
                 stage.setTitle("Sanidad Teis");
                 stage.setScene(scene);
                 stage.setMaximized(true);
+
+                scene.getStylesheets().add(
+                getClass().getResource("/com/clase/css/estilos.css").toExternalForm()
+                );
+
                 stage.show();
 
-            scene.getStylesheets().add(
-                getClass().getResource("/com/clase/css/estilos.css").toExternalForm()
-            );
+            
     }
 
     public static void main(String[] args) {

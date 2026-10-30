@@ -17,7 +17,7 @@
 
 <VBox fx:id="bntBuscarPac" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.DoctoresController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="392.0" text="Xestión Doctores">
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="1280.0" styleClass="titulo" text="Xestión Doctores">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -59,7 +59,7 @@
             </TextField>
             <Button fx:id="btnlimpiardoc" mnemonicParsing="false" onAction="#limpiarValores">
                <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/3580291.png" />
                      </image>
