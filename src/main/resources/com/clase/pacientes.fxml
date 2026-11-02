@@ -66,11 +66,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#limpiarValores">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/4715177.png" />
+                        <Image url="@img/3580291.png" />
                      </image>
                   </ImageView>
                </graphic>
