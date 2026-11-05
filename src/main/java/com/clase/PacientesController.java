@@ -43,6 +43,9 @@ public class PacientesController {
     @FXML 
     private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colpropac, colmunipac;
 
+    @FXML
+    private CitasController citasController;
+
     boolean pacienteExiste = false;
 
     
@@ -104,6 +107,11 @@ public class PacientesController {
 
     }
 
+    //método para recibir peticiones de citas controller
+    public void setCitasController(CitasController controller){
+        this.citasController = controller;
+    }
+
     @FXML
     private void comprobarDni() {
         String dni = dnipac.getText().trim().toUpperCase();
@@ -144,6 +152,7 @@ public class PacientesController {
         }
         return false;  
     }
+
 
 
     @FXML
@@ -450,6 +459,11 @@ public class PacientesController {
             return;
         } else {
             pacienteExiste = true;
+        }
+
+        //Enviamos el paciente al controlador de citas
+        if (citasController != null) {
+            citasController.cargarDatosPaciente(pacienteSelect)
         }
 
         PacienteDAOMySQL dao = new PacienteDAOMySQL();

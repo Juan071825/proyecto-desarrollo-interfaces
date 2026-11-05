@@ -11,6 +11,25 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class VentanaController {
+
+    @FXML
+    private PacientesController panelPacientesController;
+
+    @FXML
+    private DoctoresController panelDoctoresController;
+
+    @FXML
+    private CitasController panelCitasController;
+
+    @FXML
+    public void initialize() {
+
+        //para acceder desde pacientes y doctores al panel citas
+        panelPacientesController.setCitasController(panelCitasController);
+        panelDoctoresController.setCitasController(panelCitasController);
+
+    }
+
     
     @FXML 
     private void salirApp(){

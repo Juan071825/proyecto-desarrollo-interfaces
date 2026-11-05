@@ -86,9 +86,13 @@
                      </content>
                   </Tab>
                   <Tab text="Citas">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
+                     <content>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" StackPane.alignment="CENTER">
+                           <children>
+                              <fx:include source="citas.fxml" />
+                           </children>
+                        </StackPane>
+                     </content>
                   </Tab>
                </tabs>
             </TabPane>
