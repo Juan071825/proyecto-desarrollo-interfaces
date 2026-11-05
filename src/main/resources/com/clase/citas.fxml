@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.CitasController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -34,7 +33,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField>
+            <TextField fx:id="citadnipac">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -110,17 +109,17 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <CheckBox mnemonicParsing="false" text="Pendiente">
+            <CheckBox fx:id="chkpendiente" mnemonicParsing="false" text="Pendiente">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Atendida">
+            <CheckBox fx:id="chkatendida" mnemonicParsing="false" text="Atendida">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Anulada" />
+            <CheckBox fx:id="chkanulada" mnemonicParsing="false" text="Anulada" />
          </children>
          <VBox.margin>
             <Insets bottom="10.0" />

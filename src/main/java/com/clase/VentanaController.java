@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
+import com.clase.PacientesController;
+
 
 import java.io.IOException;
 
@@ -26,7 +28,7 @@ public class VentanaController {
 
         //para acceder desde pacientes y doctores al panel citas
         panelPacientesController.setCitasController(panelCitasController);
-        panelDoctoresController.setCitasController(panelCitasController);
+        //panelDoctoresController.setCitasController(panelCitasController);
 
     }
 

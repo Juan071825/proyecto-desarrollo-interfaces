@@ -43,7 +43,7 @@ public class PacientesController {
     @FXML 
     private TableColumn<Paciente, String> coldnipac, colapelpac, colnompac, colmovilpac, colpropac, colmunipac;
 
-    @FXML
+    
     private CitasController citasController;
 
     boolean pacienteExiste = false;
@@ -463,7 +463,7 @@ public class PacientesController {
 
         //Enviamos el paciente al controlador de citas
         if (citasController != null) {
-            citasController.cargarDatosPaciente(pacienteSelect)
+            citasController.cargarDatosPaciente(pacienteSelect);
         }
 
         PacienteDAOMySQL dao = new PacienteDAOMySQL();
