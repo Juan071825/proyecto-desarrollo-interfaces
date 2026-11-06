@@ -7,6 +7,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -15,13 +17,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.CitasController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.CitasController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label style="-fx-font-weight: bold;" text="Xestión Citas">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>
@@ -69,17 +71,17 @@
             </Button>
          </children>
          <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="33.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0">
          <children>
             <Label text="Motivo Cita:">
                <HBox.margin>
-                  <Insets right="5.0" />
+                  <Insets left="60.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField>
+            <TextField prefHeight="25.0" prefWidth="250.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -106,23 +108,23 @@
             </ComboBox>
             <Label text="Estado Cita:">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </Label>
             <CheckBox fx:id="chkpendiente" mnemonicParsing="false" text="Pendiente">
                <HBox.margin>
-                  <Insets right="5.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </CheckBox>
             <CheckBox fx:id="chkatendida" mnemonicParsing="false" text="Atendida">
                <HBox.margin>
-                  <Insets right="5.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </CheckBox>
             <CheckBox fx:id="chkanulada" mnemonicParsing="false" text="Anulada" />
          </children>
          <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="20.0" />
          </VBox.margin>
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -132,7 +134,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextArea prefHeight="200.0" prefWidth="500.0">
+            <TextArea prefHeight="100.0" prefWidth="500.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -149,7 +151,7 @@
             </TextArea>
          </children>
          <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="20.0" />
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER" prefHeight="26.0" prefWidth="1280.0">
@@ -164,8 +166,33 @@
       </HBox>
       <Separator prefWidth="200.0">
          <VBox.margin>
-            <Insets top="40.0" />
+            <Insets top="20.0" />
          </VBox.margin>
       </Separator>
+      <HBox alignment="CENTER" prefHeight="38.0" prefWidth="1280.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Citas Paciente">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <TableView prefHeight="400.0" prefWidth="1260.0" style="-fx-background-color: #FDF8D4; -fx-border-color: #EDE800;">
+        <columns>
+          <TableColumn prefWidth="210.0" text="ID Cita" />
+          <TableColumn prefWidth="210.0" text="Doctor" />
+            <TableColumn prefWidth="210.0" text="Especialidad" />
+            <TableColumn prefWidth="210.0" text="Día" />
+            <TableColumn prefWidth="210.0" text="Hora" />
+            <TableColumn prefWidth="210.0" text="Estado" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+      </TableView>
    </children>
 </VBox>
