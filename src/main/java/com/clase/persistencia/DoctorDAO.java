@@ -8,6 +8,6 @@ public interface DoctorDAO {
     List<Doctor> cargarDoctores();
     List<Doctor> cargarDoctoresEspec(String espedoc);
     void eliminarDoctor(Integer id);
-    void modificarDoctor(Integer id, Doctor paciente);
+    void modificarDoctor(Integer id, Doctor doctor);
     Doctor buscaDocporId(Integer id);
 }
