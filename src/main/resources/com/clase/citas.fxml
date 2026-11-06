@@ -33,7 +33,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="citadnipac">
+            <TextField fx:id="idCIta" disable="true" style="-fx-background-color: #FFF1A8;">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -43,7 +43,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField>
+            <TextField fx:id="citaiddoc" disable="true" style="-fx-background-color: #FFF1A8;">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -53,7 +53,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField>
+            <TextField fx:id="citadnipac" disable="true" style="-fx-background-color: #FFF1A8;">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>

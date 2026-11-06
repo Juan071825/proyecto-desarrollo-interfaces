@@ -50,6 +50,8 @@ public class DoctoresController implements Initializable {
     @FXML 
     private TableColumn<Paciente, String> coliddoc, colapeldoc, colnomdoc, colmovildoc, colespedoc;
 
+    private CitasController citasController;
+
         boolean doctorExiste = false;
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,7 +119,10 @@ public class DoctoresController implements Initializable {
     }
 
 
-
+    //método para recibir peticiones de citas controller
+    public void setCitasController(CitasController controller){
+        this.citasController = controller;
+    }
 
 
       private void cargarEspecialidades() {
@@ -307,6 +312,11 @@ public class DoctoresController implements Initializable {
         } else {
             doctorExiste = true;
         }
+
+         if (citasController != null) {
+            citasController.cargarDatosDoctor(doctorSelect);
+        }
+
 
         DoctorDAOMySQL dao = new DoctorDAOMySQL();
 
