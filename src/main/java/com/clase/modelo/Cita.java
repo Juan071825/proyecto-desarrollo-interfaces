@@ -6,11 +6,11 @@ import java.time.LocalTime;
 
 public class Cita {
 
-    private int idcita;
+    private Integer idcita;
     private String citadnipac;
-    private int citaiddoc;
+    private Integer citaiddoc;
     private LocalDate fechacita;
-    private LocalTime horacita;
+    private String horacita;
     private String motivo;
     private String diagnostico;
     private String tratamiento;
@@ -21,8 +21,8 @@ public class Cita {
     }
 
     // Constructor con todos los campos
-    public Cita(int idcita, String citadnipac, int citaiddoc,
-                LocalDate fechacita, LocalTime horacita,
+    public Cita(Integer idcita, String citadnipac, Integer citaiddoc,
+                LocalDate fechacita, String horacita,
                 String motivo, String diagnostico,
                 String tratamiento, String estadocita) {
 
@@ -37,13 +37,41 @@ public class Cita {
         this.estadocita = estadocita;
     }
 
+
+        public Cita(String citadnipac, Integer citaiddoc,
+                LocalDate fechacita, String horacita,
+                String motivo, String diagnostico,
+                String tratamiento, String estadocita) {
+
+        this.citadnipac = citadnipac;
+        this.citaiddoc = citaiddoc;
+        this.fechacita = fechacita;
+        this.horacita = horacita;
+        this.motivo = motivo;
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+        this.estadocita = estadocita;
+    }
+
+    public Cita(String citadnipac, Integer citaiddoc,
+                LocalDate fechacita, String horacita,
+                String estadocita) {
+
+        this.citadnipac = citadnipac;
+        this.citaiddoc = citaiddoc;
+        this.fechacita = fechacita;
+        this.horacita = horacita;
+        this.estadocita = estadocita;
+    }
+
+
     // Getters y Setters
 
-    public int getIdcita() {
+    public Integer getIdcita() {
         return idcita;
     }
 
-    public void setIdcita(int idcita) {
+    public void setIdcita(Integer idcita) {
         this.idcita = idcita;
     }
 
@@ -55,11 +83,11 @@ public class Cita {
         this.citadnipac = citadnipac;
     }
 
-    public int getCitaiddoc() {
+    public Integer getCitaiddoc() {
         return citaiddoc;
     }
 
-    public void setCitaiddoc(int citaiddoc) {
+    public void setCitaiddoc(Integer citaiddoc) {
         this.citaiddoc = citaiddoc;
     }
 
@@ -71,11 +99,11 @@ public class Cita {
         this.fechacita = fechacita;
     }
 
-    public LocalTime getHoracita() {
+    public String getHoracita() {
         return horacita;
     }
 
-    public void setHoracita(LocalTime horacita) {
+    public void setHoracita(String horacita) {
         this.horacita = horacita;
     }
 

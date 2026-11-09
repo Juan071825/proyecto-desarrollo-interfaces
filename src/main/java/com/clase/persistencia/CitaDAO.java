@@ -1,9 +1,17 @@
+package com.clase.persistencia;
+
+import com.clase.modelo.Cita;
+import com.clase.modelo.Doctor;
+
+import java.util.List;
+
+
 public interface CitaDAO {
     
-    void guardarCita(Cita cita);
-    List<Cita> cargarCitas();
-    void eliminarCita(Integer id);
-    void modificarCita(Integer id, Cita cita);
-    Doctor buscaCitaporId(Integer id);
+    public void guardarCita(Cita cita);
+    public List<Cita> cargarCitas();
+    public void eliminarCita(Integer idcita);
+    public void modificarCita(Integer idcita, Cita cita);
+    /*Doctor buscaCitaporId(Integer id);*/
 
 }
