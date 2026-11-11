@@ -35,7 +35,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="idCIta" disable="true" style="-fx-background-color: #FFF1A8;">
+            <TextField fx:id="idcita" disable="true" style="-fx-background-color: #FFF1A8;">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -60,7 +60,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#limpiarValores">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -81,7 +81,7 @@
                   <Insets left="60.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="250.0">
+            <TextField fx:id="motivo" prefHeight="25.0" prefWidth="250.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -91,7 +91,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker>
+            <DatePicker fx:id="fechacita">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -101,7 +101,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="horacita" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -134,7 +134,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextArea prefHeight="100.0" prefWidth="500.0">
+            <TextArea fx:id="diagnostico" prefHeight="100.0" prefWidth="500.0">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -144,7 +144,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <TextArea prefHeight="200.0" prefWidth="500.0">
+            <TextArea fx:id="tratamiento" prefHeight="200.0" prefWidth="500.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -156,12 +156,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="26.0" prefWidth="1280.0">
          <children>
-            <Button mnemonicParsing="false" text="Guardar">
+            <Button fx:id="btnguardarcita" mnemonicParsing="false" onAction="#guardarCita" text="Guardar">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Eliminar" />
+            <Button fx:id="btndelcita" mnemonicParsing="false" onAction="#eliminarCita" text="Eliminar" />
          </children>
       </HBox>
       <Separator prefWidth="200.0">
@@ -171,7 +171,7 @@
       </Separator>
       <HBox alignment="CENTER" prefHeight="38.0" prefWidth="1280.0">
          <children>
-            <Label contentDisplay="CENTER" text="Citas Paciente">
+            <Label fx:id="labelCitasPaciente" contentDisplay="CENTER" text="Citas Paciente">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -181,14 +181,14 @@
             </Label>
          </children>
       </HBox>
-      <TableView prefHeight="400.0" prefWidth="1260.0" style="-fx-background-color: #FDF8D4; -fx-border-color: #EDE800;">
+      <TableView fx:id="tablaCitas" prefHeight="400.0" prefWidth="1260.0" style="-fx-background-color: #FDF8D4; -fx-border-color: #EDE800;">
         <columns>
-          <TableColumn prefWidth="210.0" text="ID Cita" />
-          <TableColumn prefWidth="210.0" text="Doctor" />
-            <TableColumn prefWidth="210.0" text="Especialidad" />
-            <TableColumn prefWidth="210.0" text="Día" />
-            <TableColumn prefWidth="210.0" text="Hora" />
-            <TableColumn prefWidth="210.0" text="Estado" />
+          <TableColumn fx:id="colidcita" prefWidth="210.0" text="ID Cita" />
+          <TableColumn fx:id="colcitaiddoc" prefWidth="210.0" text="Doctor" />
+            <TableColumn fx:id="colespedoc" prefWidth="210.0" text="Especialidad" />
+            <TableColumn fx:id="colfechacita" prefWidth="210.0" text="Día" />
+            <TableColumn fx:id="colhoracita" prefWidth="210.0" text="Hora" />
+            <TableColumn fx:id="colestado" prefWidth="210.0" text="Estado" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />

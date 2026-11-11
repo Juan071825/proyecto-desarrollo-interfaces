@@ -9,7 +9,7 @@ import java.util.List;
 public interface CitaDAO {
     
     public void guardarCita(Cita cita);
-    public List<Cita> cargarCitas();
+    public List<Cita> cargarCitasPaciente(String dnipac, String iddoc);
     public void eliminarCita(Integer idcita);
     public void modificarCita(Integer idcita, Cita cita);
     /*Doctor buscaCitaporId(Integer id);*/

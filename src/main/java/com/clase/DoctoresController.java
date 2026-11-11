@@ -338,7 +338,7 @@ public class DoctoresController implements Initializable {
         }
         espedoc.setValue(doctor.getEspecialidad());
 
-        System.out.println("cargar paciente: " + doctor);
+        System.out.println("cargar doctor: " + doctor);
     }
 
 

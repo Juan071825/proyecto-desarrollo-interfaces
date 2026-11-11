@@ -2,7 +2,6 @@
 package com.clase.modelo;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Cita {
 
@@ -15,6 +14,8 @@ public class Cita {
     private String diagnostico;
     private String tratamiento;
     private String estadocita;
+
+    private String espedoc;
 
     // Constructor vacío
     public Cita() {
@@ -53,12 +54,13 @@ public class Cita {
         this.estadocita = estadocita;
     }
 
-    public Cita(String citadnipac, Integer citaiddoc,
-                LocalDate fechacita, String horacita,
-                String estadocita) {
+    public Cita(Integer idcita, Integer citaiddoc,
+                LocalDate fechacita, String espedoc, 
+                String horacita, String estadocita) {
 
-        this.citadnipac = citadnipac;
+        this.idcita = idcita;
         this.citaiddoc = citaiddoc;
+        this.espedoc = espedoc;
         this.fechacita = fechacita;
         this.horacita = horacita;
         this.estadocita = estadocita;
@@ -138,5 +140,23 @@ public class Cita {
     public void setEstadocita(String estadocita) {
         this.estadocita = estadocita;
     }
-}
 
+
+    public String getEspedoc() {
+        return espedoc;
+    }
+
+    public void setEspedoc(String espedoc) {
+        this.espedoc = espedoc;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Cita [Id=" + getIdcita() + ", Dnipac=" + getCitadnipac() + ", Iddoc="
+                + getCitaiddoc() + ", Fecha=" + getFechacita() + ", Hora=" + getHoracita()
+                + ", Motivo=" + getMotivo() + ", Diagnostico=" + getDiagnostico() + ", Tratamiento="
+                + getTratamiento() + ", Estadocita=" + getEstadocita() + "]";
+    }  
+
+}
