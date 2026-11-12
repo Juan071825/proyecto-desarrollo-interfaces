@@ -4,6 +4,7 @@
  -fx-text-fill: white;
  -fx-font-size: 14px;
  -fx-background-radius: 5;
+ -fx-font-weight:bold;
 }
 
 .button:hover {
@@ -75,4 +76,13 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 4px;
+    -fx-font-size: 20px;
+}
+
+
+#labelCitasPaciente {
+    -fx-background-color: #2e7d32;
+    -fx-text-fill:#ffffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
 }
