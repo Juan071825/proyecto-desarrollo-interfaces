@@ -7,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
-import com.clase.PacientesController;
-
-
 import java.io.IOException;
 
 public class VentanaController {

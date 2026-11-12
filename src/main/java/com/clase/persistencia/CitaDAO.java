@@ -1,7 +1,6 @@
 package com.clase.persistencia;
 
 import com.clase.modelo.Cita;
-import com.clase.modelo.Doctor;
 
 import java.util.List;
 

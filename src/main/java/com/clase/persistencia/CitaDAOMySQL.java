@@ -1,17 +1,8 @@
 package com.clase.persistencia;
 
-import com.clase.persistencia.ConexionMySQL;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-
-import com.clase.persistencia.CitaDAO;
 import com.clase.modelo.Cita;
-import com.clase.modelo.Doctor;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.ArrayList;
 
 import java.sql.Connection;

@@ -8,15 +8,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 import com.clase.modelo.Doctor;
 import com.clase.modelo.Paciente;
-import com.clase.persistencia.PacienteDAOMySQL;
 import com.google.gson.JsonObject;
 import com.clase.modelo.Cita;
 import com.clase.persistencia.CitaDAOMySQL;
-import com.clase.persistencia.DoctorDAOMySQL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +29,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.Label;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
