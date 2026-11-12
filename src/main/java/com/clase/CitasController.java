@@ -84,6 +84,7 @@ public class CitasController implements Initializable {
 
     // Recibe el paciente seleccionado
     public void cargarDatosPaciente(Paciente paciente) {
+        limpiarValores();
         citadnipac.setText(paciente.getDni());
         comprobarCargarCitas();
         labelCitasPaciente.setText("Citas Paciente " + paciente.getApellidos() + ", " + paciente.getNombre());
@@ -91,6 +92,7 @@ public class CitasController implements Initializable {
     }
 
    public void cargarDatosDoctor(Doctor doctor) {
+        limpiarValores();
         citaiddoc.setText(String.valueOf(doctor.getIddoc()));
         comprobarCargarCitas();
         
