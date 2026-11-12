@@ -73,7 +73,7 @@ public class CitaDAOMySQL implements CitaDAO {
                         while (rs.next()) {
                             Cita cita = new Cita(
                                     rs.getInt("idcita"),
-                                    rs.getInt("citaiddoc"),
+                                    rs.getString("apeldoc"),
                                     rs.getDate("fechacita").toLocalDate(),
                                     rs.getString("espedoc"),
                                     rs.getString("horacita"),

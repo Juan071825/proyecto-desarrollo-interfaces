@@ -184,7 +184,7 @@
       <TableView fx:id="tablaCitas" prefHeight="400.0" prefWidth="1260.0" style="-fx-background-color: #FDF8D4; -fx-border-color: #EDE800;">
         <columns>
           <TableColumn fx:id="colidcita" prefWidth="210.0" text="ID Cita" />
-          <TableColumn fx:id="colcitaiddoc" prefWidth="210.0" text="Doctor" />
+          <TableColumn fx:id="colapeldoc" prefWidth="210.0" text="Doctor" />
             <TableColumn fx:id="colespedoc" prefWidth="210.0" text="Especialidad" />
             <TableColumn fx:id="colfechacita" prefWidth="210.0" text="Día" />
             <TableColumn fx:id="colhoracita" prefWidth="210.0" text="Hora" />

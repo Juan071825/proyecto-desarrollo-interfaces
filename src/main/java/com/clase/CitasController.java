@@ -59,10 +59,10 @@ public class CitasController implements Initializable {
     private TableView<Cita> tablaCitas;
 
     @FXML 
-    private TableColumn<Cita, String> colespedoc, colhoracita, colestado;
+    private TableColumn<Cita, String> colespedoc, colhoracita, colestado, colapeldoc;
 
     @FXML 
-    private TableColumn<Cita, Integer> colidcita, colcitaiddoc;
+    private TableColumn<Cita, Integer> colidcita;
 
     @FXML 
     private TableColumn<Cita, LocalDate> colfechacita;
@@ -103,7 +103,7 @@ public class CitasController implements Initializable {
         cargarHorario();
 
         colidcita.setCellValueFactory(new PropertyValueFactory<>("idcita"));
-        colcitaiddoc.setCellValueFactory(new PropertyValueFactory<>("citaiddoc"));
+        colapeldoc.setCellValueFactory(new PropertyValueFactory<>("apeldoc"));
         colespedoc.setCellValueFactory(new PropertyValueFactory<>("espedoc"));
         colfechacita.setCellValueFactory(new PropertyValueFactory<>("fechacita"));
         colhoracita.setCellValueFactory(new PropertyValueFactory<>("horacita"));
@@ -160,8 +160,8 @@ public class CitasController implements Initializable {
     public void limpiarValores() {
 
         idcita.setText("");
-        citadnipac.setText("");
-        citaiddoc.setText("");
+        //citadnipac.setText("");
+        //citaiddoc.setText("");
         chkanulada.setSelected(false);
         chkatendida.setSelected(false);
         chkpendiente.setSelected(false);
@@ -170,8 +170,8 @@ public class CitasController implements Initializable {
         fechacita.setValue(null); 
         diagnostico.setText(null);
         tratamiento.setText(null);
-        labelCitasPaciente.setText("Citas Paciente");
-        tablaCitas.getItems().clear();
+        //labelCitasPaciente.setText("Citas Paciente");
+        //tablaCitas.getItems().clear();
 
     }
 

@@ -16,6 +16,7 @@ public class Cita {
     private String estadocita;
 
     private String espedoc;
+    private String apeldoc;
 
     // Constructor vacío
     public Cita() {
@@ -54,12 +55,12 @@ public class Cita {
         this.estadocita = estadocita;
     }
 
-    public Cita(Integer idcita, Integer citaiddoc,
+    public Cita(Integer idcita, String apeldoc,
                 LocalDate fechacita, String espedoc, 
                 String horacita, String estadocita) {
 
         this.idcita = idcita;
-        this.citaiddoc = citaiddoc;
+        this.apeldoc = apeldoc;
         this.espedoc = espedoc;
         this.fechacita = fechacita;
         this.horacita = horacita;
@@ -150,6 +151,14 @@ public class Cita {
         this.espedoc = espedoc;
     }
 
+     public String getApeldoc() {
+        return apeldoc;
+    }
+
+    public void setApeldoc(String apeldoc) {
+        this.apeldoc = apeldoc;
+    }  
+    
 
     @Override
     public String toString() {
@@ -157,6 +166,6 @@ public class Cita {
                 + getCitaiddoc() + ", Fecha=" + getFechacita() + ", Hora=" + getHoracita()
                 + ", Motivo=" + getMotivo() + ", Diagnostico=" + getDiagnostico() + ", Tratamiento="
                 + getTratamiento() + ", Estadocita=" + getEstadocita() + "]";
-    }  
+    }
 
 }
