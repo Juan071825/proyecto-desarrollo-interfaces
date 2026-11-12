@@ -91,11 +91,24 @@ public class CitasController implements Initializable {
     
     }
 
+        public void limpiarDatosPaciente() {
+        citadnipac.setText(null);
+        tablaCitas.getItems().clear();
+        limpiarValores();
+        labelCitasPaciente.setText("Paciente Cita");
+    }
+
    public void cargarDatosDoctor(Doctor doctor) {
         limpiarValores();
         citaiddoc.setText(String.valueOf(doctor.getIddoc()));
         comprobarCargarCitas();
         
+    }
+
+    public void limpiarDatosDoctor() {
+        citaiddoc.setText(null);
+        tablaCitas.getItems().clear();
+        limpiarValores();
     }
 
     @Override

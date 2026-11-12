@@ -416,6 +416,10 @@ public class PacientesController {
         propac.getSelectionModel().clearSelection();
         munipac.getSelectionModel().clearSelection();
         System.out.println("Campos vaciados");
+
+        if (citasController != null) {
+            citasController.limpiarDatosPaciente();
+        }
     }
 
    

@@ -169,6 +169,10 @@ public class DoctoresController implements Initializable {
         coledocno.setSelected(false);
         coledocsi.setSelected(false);
         doctorExiste = false;
+
+        if (citasController != null) {
+            citasController.limpiarDatosDoctor();
+        }
     }
 
 
