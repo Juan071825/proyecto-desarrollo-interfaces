@@ -106,7 +106,7 @@ order by nompac]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="30" uuid="6ff49ecf-abd9-4b27-9e4b-3ec35fb67c08"/>
 				<textElement verticalAlignment="Middle"/>
