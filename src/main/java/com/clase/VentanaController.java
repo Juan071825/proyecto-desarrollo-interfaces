@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import com.clase.informes.imprimirPacientes;
 
 import java.io.IOException;
 
@@ -63,5 +64,11 @@ public class VentanaController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void informePacientes(){
+        System.out.println("PULSADO INFOMER PACIENTES");
+        imprimirPacientes.mostrar();
     }
 }

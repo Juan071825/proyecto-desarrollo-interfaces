@@ -33,7 +33,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Informes">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Informe Paciente" />
+                    <MenuItem fx:id="informePacientes" mnemonicParsing="false" onAction="#informePacientes" text="Informe Paciente" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Acerca">
@@ -71,7 +71,7 @@
                      <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
-                              <fx:include source="pacientes.fxml" fx:id="panelPacientes" />
+                              <fx:include fx:id="panelPacientes" source="pacientes.fxml" />
                            </children>
                         </StackPane>
                      </content>
@@ -80,7 +80,7 @@
                      <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
-                              <fx:include source="doctores.fxml" fx:id="panelDoctores" />
+                              <fx:include fx:id="panelDoctores" source="doctores.fxml" />
                            </children>
                         </StackPane>
                      </content>
@@ -89,7 +89,7 @@
                      <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
-                              <fx:include source="citas.fxml" fx:id="panelCitas"/>
+                              <fx:include fx:id="panelCitas" source="citas.fxml" />
                            </children>
                         </StackPane>
                      </content>
