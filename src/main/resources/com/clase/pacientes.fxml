@@ -158,7 +158,7 @@
          <VBox.margin>
             <Insets bottom="20.0" top="20.0" />
          </VBox.margin></Separator>
-      <TableView fx:id="tablaPacientes" prefHeight="450.0" prefWidth="1246.0" style="-fx-background-color: #FDF8D4; -fx-border-color: #EDE800;">
+      <TableView fx:id="tablaPacientes" prefHeight="450.0" prefWidth="1246.0" style="-fx-background-color: #FDF8D4;">
         <columns>
             <TableColumn fx:id="coldnipac" prefWidth="140.0" style="-fx-alignment: CENTER;" text="DNI" />
             <TableColumn fx:id="colapelpac" prefWidth="200.0" text="APELLIDOS" />
