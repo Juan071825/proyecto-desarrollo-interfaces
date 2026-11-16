@@ -45,20 +45,20 @@
             </MenuBar>
             <ToolBar maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="1280.0">
               <items>
-                <Button mnemonicParsing="false" onAction="#salirApp" prefHeight="20.0" prefWidth="20.0">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/images%20(1).png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <Button mnemonicParsing="false" onAction="#abrirDir">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/folder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                <Button mnemonicParsing="false" onAction="#salirApp" prefHeight="20.0" prefWidth="20.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/images%20(1).png" />
                            </image>
                         </ImageView>
                      </graphic>
