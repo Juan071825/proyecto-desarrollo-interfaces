@@ -182,6 +182,7 @@ public class PacientesController {
         } else {
             movilpac.setStyle("-fx-border-color : red;");
             movilpac.setText("");
+            movilpac.setText("Móvil no válido");
         }
     }
 
@@ -203,6 +204,7 @@ public class PacientesController {
         } else {
             emailpac.setStyle("-fx-border-color : red;");
             emailpac.setText("");
+            emailpac.setText("Email no válido");
         }
     }
 
