@@ -168,6 +168,8 @@ public class DoctoresController implements Initializable {
         espedoc.getSelectionModel().clearSelection();
         coledocno.setSelected(false);
         coledocsi.setSelected(false);
+        movildoc.setStyle("");
+        emaildoc.setStyle("");
         doctorExiste = false;
 
         if (citasController != null) {

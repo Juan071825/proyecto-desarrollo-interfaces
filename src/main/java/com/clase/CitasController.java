@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -132,6 +133,8 @@ public class CitasController implements Initializable {
         chkanulada.setOnAction(this::gestionarExclusion);
         chkatendida.setOnAction(this::gestionarExclusion);
         chkpendiente.setOnAction(this::gestionarExclusion);
+
+        fechacita.setEditable(false);
 
     }
 
@@ -262,6 +265,7 @@ public class CitasController implements Initializable {
 
         //cargar paciente en la tabla
         cargarCitasPaciente();
+        limpiarValores();
 
     }
 
@@ -270,14 +274,12 @@ public class CitasController implements Initializable {
     private void cargarCitasPaciente() {
         CitaDAOMySQL dao = new CitaDAOMySQL();
 
-        List<Cita> citas;
+        List<Cita> citas = new ArrayList<>();
 
-        if ((citaiddoc.getText().isBlank() || citaiddoc.getText() == null) && (!citadnipac.getText().isBlank()) || citadnipac.getText() != null) {
+        if ((citaiddoc.getText() == null || citaiddoc.getText().isBlank()) && (citadnipac.getText() != null && !citadnipac.getText().isBlank())) {
             citas = dao.cargarCitasPaciente(citadnipac.getText());
-        } else if((!citaiddoc.getText().isBlank() || citaiddoc.getText() == null) && (!citadnipac.getText().isBlank() || citadnipac.getText() == null)) {
+        } else if((citaiddoc.getText() != null && !citaiddoc.getText().isBlank()) && (citadnipac.getText() != null && !citadnipac.getText().isBlank())) {
             citas = dao.cargarCitasPaciente(citadnipac.getText(), citaiddoc.getText());
-        } else {
-            citas = null;
         }
 
         tablaCitas.getItems().setAll(citas);
@@ -378,6 +380,8 @@ public class CitasController implements Initializable {
             System.out.println("Botón Cancelar pulsado");
             return;
         }
+
+        limpiarValores();
 
         cargarCitasPaciente();
     }

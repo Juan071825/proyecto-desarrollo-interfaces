@@ -105,6 +105,8 @@ public class PacientesController {
 
         });
 
+        nacpac.setEditable(false);
+
     }
 
     //método para recibir peticiones de citas controller
@@ -417,6 +419,9 @@ public class PacientesController {
         nacpac.setValue(null);
         propac.getSelectionModel().clearSelection();
         munipac.getSelectionModel().clearSelection();
+        movilpac.setStyle("");
+        emailpac.setStyle("");
+
         System.out.println("Campos vaciados");
 
         if (citasController != null) {

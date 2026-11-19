@@ -52,7 +52,7 @@ public class CitaDAOMySQL implements CitaDAO {
                         + "d.apeldoc, d.espedoc "
                         + "FROM citas c "
                         + "INNER JOIN doctores d ON c.citaiddoc = d.iddoc "
-                        + "WHERE c.citadnipac = ? AND c.citaiddoc = ?"
+                        + "WHERE c.citadnipac = ? AND c.citaiddoc = ? "
                         + "ORDER BY c.fechacita";
 
             try (Connection conexion = ConexionMySQL.getConexion();
@@ -134,14 +134,14 @@ public class CitaDAOMySQL implements CitaDAO {
                 System.out.println("Cita eliminado correctamente");
             } catch(SQLException e) {
                 System.out.println("Error al eliminar el cita: " + e.getMessage());
-            }
         }
+    }
 
 
     public void modificarCita(Integer idcita, Cita cita){
 
         String sql = "UPDATE citas SET "
-                    + "citadnipac = ?, citaiddoc = ?, fechacita = ?, horacita = ?, motivo = ?, diagnostico = ?, tratamiento = ?, estadocita = ?"
+                    + "citadnipac = ?, citaiddoc = ?, fechacita = ?, horacita = ?, motivo = ?, diagnostico = ?, tratamiento = ?, estadocita = ? "
                     + "WHERE idcita = ?";
 
         try (Connection conexion = ConexionMySQL.getConexion();
