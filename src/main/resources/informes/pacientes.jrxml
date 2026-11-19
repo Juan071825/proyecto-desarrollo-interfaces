@@ -76,15 +76,15 @@ order by nompac]]>
 				<text><![CDATA[Código ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="0" width="100" height="30" uuid="a4f7f3a9-9c6c-4ee5-a2c1-0f0ef383a3cb"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="150" y="0" width="130" height="30" uuid="a4f7f3a9-9c6c-4ee5-a2c1-0f0ef383a3cb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="0" width="100" height="30" uuid="27579769-6d36-4381-8b95-3907b29aa3f4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="310" y="0" width="110" height="30" uuid="27579769-6d36-4381-8b95-3907b29aa3f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
@@ -109,22 +109,22 @@ order by nompac]]>
 		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="30" uuid="6ff49ecf-abd9-4b27-9e4b-3ec35fb67c08"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{dnipac}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="0" width="130" height="30" uuid="66d691c0-7e2e-42bd-9d88-6f306a43d47d"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="150" y="0" width="130" height="30" uuid="66d691c0-7e2e-42bd-9d88-6f306a43d47d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{apelpac}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="120" height="30" uuid="202ba6ad-bc08-4279-b334-eed9c252e91f"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="310" y="0" width="110" height="30" uuid="202ba6ad-bc08-4279-b334-eed9c252e91f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nompac}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="100" height="30" uuid="5c9727c7-de5b-49c4-a38c-29dc3d8f32c7"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{movilpac}]]></textFieldExpression>
 			</textField>
 		</band>

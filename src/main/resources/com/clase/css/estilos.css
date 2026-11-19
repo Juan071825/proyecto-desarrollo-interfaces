@@ -124,4 +124,21 @@
 border-color: #008000;
 -fx-border-width: 2px;
 border-width: 2px;
+-fx-background-color: #dcf7dc;
+background-color: #dcf7dc;
+}
+
+.table-row-cell:hover {
+    -fx-background-color:#7bcf7b;
+    background-color:#7bcf7b
+}
+
+.table-row-cell:hover {
+    -fx-background-color:#7bcf7b;
+    background-color:#7bcf7b
+}
+
+.table-row-cell:selected {
+    -fx-background-color:#67ac67;
+    background-color:#67ac67
 }
