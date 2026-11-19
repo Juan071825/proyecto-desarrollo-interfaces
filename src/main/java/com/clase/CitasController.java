@@ -83,7 +83,7 @@ public class CitasController implements Initializable {
         limpiarValores();
         citadnipac.setText(paciente.getDni());
         comprobarCargarCitas();
-        labelCitasPaciente.setText("Citas Paciente " + paciente.getApellidos() + ", " + paciente.getNombre());
+        labelCitasPaciente.setText("Citas Paciente: " + paciente.getApellidos() + ", " + paciente.getNombre());
     
     }
 

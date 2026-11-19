@@ -516,6 +516,10 @@ public class PacientesController {
         propac.setValue(paciente.getProvincia());
         munipac.setValue(paciente.getMunicipio());
 
+        if (citasController != null) {
+            citasController.cargarDatosPaciente(paciente);
+        }
+
         System.out.println("El paciente es " + paciente);
     }
 }

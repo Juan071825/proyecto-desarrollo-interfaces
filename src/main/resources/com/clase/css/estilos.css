@@ -140,5 +140,5 @@ background-color: #dcf7dc;
 
 .table-row-cell:selected {
     -fx-background-color:#67ac67;
-    background-color:#67ac67
+    background-color:#67ac67;
 }

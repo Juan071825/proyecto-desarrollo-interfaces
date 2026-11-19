@@ -185,9 +185,9 @@
           <TableColumn fx:id="colidcita" prefWidth="210.0" text="ID Cita" />
           <TableColumn fx:id="colapeldoc" prefWidth="210.0" text="Doctor" />
             <TableColumn fx:id="colespedoc" prefWidth="210.0" text="Especialidad" />
-            <TableColumn fx:id="colfechacita" prefWidth="210.0" text="Día" />
-            <TableColumn fx:id="colhoracita" prefWidth="210.0" text="Hora" />
-            <TableColumn fx:id="colestado" prefWidth="210.0" text="Estado" />
+            <TableColumn fx:id="colfechacita" prefWidth="210.0" style="-fx-alignment: CENTER;" text="Día" />
+            <TableColumn fx:id="colhoracita" prefWidth="210.0" style="-fx-alignment: CENTER;" text="Hora" />
+            <TableColumn fx:id="colestado" prefWidth="210.0" style="-fx-alignment: CENTER;" text="Estado" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
