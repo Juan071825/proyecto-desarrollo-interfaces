@@ -75,12 +75,51 @@ public class CitaDAOMySQL implements CitaDAO {
                     }
 
                 } catch (SQLException e) {
-                    System.out.println("Error al cargar las citas: " + e.getMessage());
+                    System.out.println("Error SQL al cargar las citas de un paciente con un doctor: " + e.getMessage());
                 }
 
             return citas;
         }
 
+
+        public List<Cita> cargarCitasPaciente(String dnipac) {
+
+        List<Cita> citas = new ArrayList<>();
+
+            // Solo obtenemos los campos que necesitamos para la tabla
+           String sql = "SELECT c.idcita, c.citadnipac, c.citaiddoc, "
+                        + "c.fechacita, c.horacita, c.motivo, "
+                        + "c.diagnostico, c.tratamiento, c.estadocita, "
+                        + "d.apeldoc, d.espedoc "
+                        + "FROM citas c "
+                        + "INNER JOIN doctores d ON c.citaiddoc = d.iddoc "
+                        + "WHERE c.citadnipac = ? "
+                        + "ORDER BY c.fechacita";
+
+            try (Connection conexion = ConexionMySQL.getConexion();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+                    ps.setString(1, dnipac);
+                    try (ResultSet rs = ps.executeQuery()){
+                        // Recorremos las filas obtenidas
+                        while (rs.next()) {
+                            Cita cita = new Cita(
+                                    rs.getInt("idcita"),
+                                    rs.getString("apeldoc"),
+                                    rs.getDate("fechacita").toLocalDate(),
+                                    rs.getString("espedoc"),
+                                    rs.getString("horacita"),
+                                    rs.getString("estadocita"));
+
+                            citas.add(cita);
+                        }
+                    }
+
+                } catch (SQLException e) {
+                    System.out.println("Error SQL al cargar las citas de un paciente: " + e.getMessage());
+                }
+
+            return citas;
+        }
 
     public void eliminarCita(Integer idcita){
 

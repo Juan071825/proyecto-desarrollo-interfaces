@@ -71,7 +71,7 @@ public class CitasController implements Initializable {
 
 
     public void comprobarCargarCitas() {
-        if (!citadnipac.getText().isBlank() && !citadnipac.getText().isBlank()) {
+        if ( !citadnipac.getText().isBlank()) {
             cargarCitasPaciente();
         } else {
             System.out.println("No se cargan las citas del doctor con el paciente por que los campos están vacíos.");
@@ -269,7 +269,17 @@ public class CitasController implements Initializable {
     @FXML 
     private void cargarCitasPaciente() {
         CitaDAOMySQL dao = new CitaDAOMySQL();
-        List<Cita> citas = dao.cargarCitasPaciente(citadnipac.getText(), citaiddoc.getText());
+
+        List<Cita> citas;
+
+        if ((citaiddoc.getText().isBlank() || citaiddoc.getText() == null) && (!citadnipac.getText().isBlank()) || citadnipac.getText() != null) {
+            citas = dao.cargarCitasPaciente(citadnipac.getText());
+        } else if((!citaiddoc.getText().isBlank() || citaiddoc.getText() == null) && (!citadnipac.getText().isBlank() || citadnipac.getText() == null)) {
+            citas = dao.cargarCitasPaciente(citadnipac.getText(), citaiddoc.getText());
+        } else {
+            citas = null;
+        }
+
         tablaCitas.getItems().setAll(citas);
         tablaCitas.refresh();
 
