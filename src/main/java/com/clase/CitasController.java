@@ -106,6 +106,7 @@ public class CitasController implements Initializable {
         citaiddoc.setText(null);
         tablaCitas.getItems().clear();
         limpiarValores();
+        cargarCitasPaciente();
     }
 
     @Override
