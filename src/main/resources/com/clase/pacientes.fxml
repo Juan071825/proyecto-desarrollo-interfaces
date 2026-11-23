@@ -25,14 +25,14 @@
             <Insets bottom="20.0" top="20.0" />
          </VBox.margin>
       </Label>
-      <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="600.0">
          <children>
             <Label text="DNI:">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="dnipac" prefHeight="25.0" prefWidth="138.0">
+            <TextField fx:id="dnipac" alignment="CENTER" prefHeight="25.0" prefWidth="138.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                </HBox.margin>
@@ -77,10 +77,10 @@
             </Button>
          </children>
          <VBox.margin>
-            <Insets left="10.0" right="10.0" top="20.0" />
+            <Insets left="120.0" top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0">
+      <HBox prefHeight="33.0" prefWidth="600.0">
          <children>
             <Label text="Fecha Nacimiento:">
                <HBox.margin>
@@ -93,7 +93,7 @@
                   <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="movilpac" prefHeight="25.0" prefWidth="278.0">
+            <TextField fx:id="movilpac" alignment="CENTER" prefHeight="25.0" prefWidth="278.0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -110,10 +110,10 @@
             </TextField>
          </children>
          <VBox.margin>
-            <Insets right="100.0" top="20.0" />
+            <Insets left="120.0" top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="600.0">
          <children>
             <Label text="Dirección:">
                <HBox.margin>
@@ -135,7 +135,7 @@
             <ComboBox fx:id="munipac" prefHeight="25.0" prefWidth="275.0" />
          </children>
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets left="120.0" top="20.0" />
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1280.0">
