@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream.*;
 
 import com.clase.modelo.Paciente;
 import com.clase.persistencia.PacienteDAOMySQL;
@@ -329,8 +332,20 @@ public class PacientesController {
         String provincia = propac.getValue();
         String localidad = munipac.getValue();
 
-
         Paciente paciente = new Paciente(dni, apellidos, nombre, movil, email, fechaNacimiento, direccion,  provincia, localidad);
+
+        List<Paciente> pacientes = tablaPacientes.getItems();
+
+        List<String> moviles = pacientes.stream().map(Paciente::getMovil).distinct().collect(Collectors.toList());
+
+        if(moviles.contains(paciente.getMovil())){
+            Alert alert4 = new Alert(Alert.AlertType.ERROR);
+            alert4.setTitle("Error");
+            alert4.setHeaderText(null);
+            alert4.setContentText("El móvil: " + paciente.getMovil() + " ya existe.");
+            Optional<ButtonType> result3 = alert4.showAndWait();
+            return;
+        }
 
         PacienteDAOMySQL dao = new PacienteDAOMySQL();
 
