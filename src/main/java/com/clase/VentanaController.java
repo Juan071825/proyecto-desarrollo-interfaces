@@ -38,6 +38,7 @@ public class VentanaController {
         Platform.exit();
     }
 
+
     @FXML 
     private void mostrarAcercade() throws IOException {
         FXMLLoader loader = new FXMLLoader(
@@ -50,6 +51,22 @@ public class VentanaController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
+        @FXML 
+    private void mostrarLogin() throws IOException {
+        FXMLLoader loader = new FXMLLoader(
+            getClass().getResource("/com/clase/login.fxml")
+        );
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("User Login");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
 
     @FXML 
     private void abrirDir() {

@@ -50,7 +50,7 @@ public class CitasController implements Initializable {
     private TextArea diagnostico, tratamiento;
 
     @FXML
-    private CheckBox chkatendida, chkpendiente, chkanulada;
+    private CheckBox chkatendida, chkpendiente, chkanulada, chkVerCitas;
 
     @FXML
     private TableView<Cita> tablaCitas;
@@ -88,7 +88,7 @@ public class CitasController implements Initializable {
     
     }
 
-        public void limpiarDatosPaciente() {
+    public void limpiarDatosPaciente() {
         citadnipac.setText(null);
         tablaCitas.getItems().clear();
         limpiarValores();
@@ -286,6 +286,8 @@ public class CitasController implements Initializable {
         tablaCitas.getItems().setAll(citas);
         tablaCitas.refresh();
 
+        chkVerCitas.setSelected(false);
+
         System.out.println("Cargar citas: " + citas);
     }
 
@@ -385,6 +387,12 @@ public class CitasController implements Initializable {
         limpiarValores();
 
         cargarCitasPaciente();
+    }
+
+    public void cargarCitas() {
+        CitaDAOMySQL dao = new CitaDAOMySQL();
+        List<Cita> citas = dao.cargarCitas();
+        tablaCitas.getItems().setAll(citas);
     }
 
 }

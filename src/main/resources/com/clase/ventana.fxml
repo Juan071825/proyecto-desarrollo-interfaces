@@ -42,6 +42,11 @@
                     <MenuItem fx:id="acercade" mnemonicParsing="false" onAction="#mostrarAcercade" text="Acerca de" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Login">
+                    <items>
+                      <MenuItem fx:id="login" mnemonicParsing="false" onAction="#mostrarLogin" text="User Login" />
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
             <ToolBar maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="1280.0">
