@@ -98,12 +98,12 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="coledocsi" mnemonicParsing="false" text="Sí">
+            <RadioButton fx:id="coledocsi" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Sí">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="coledocno" mnemonicParsing="false" text="No">
+            <RadioButton fx:id="coledocno" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="No">
                <HBox.margin>
                   <Insets right="15.0" />
                </HBox.margin>

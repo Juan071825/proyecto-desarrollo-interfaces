@@ -110,17 +110,17 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Label>
-            <CheckBox fx:id="chkpendiente" mnemonicParsing="false" text="Pendiente">
+            <CheckBox fx:id="chkpendiente" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Pendiente">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox fx:id="chkatendida" mnemonicParsing="false" text="Atendida">
+            <CheckBox fx:id="chkatendida" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Atendida">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox fx:id="chkanulada" mnemonicParsing="false" text="Anulada" />
+            <CheckBox fx:id="chkanulada" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Anulada" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="50.0" />
